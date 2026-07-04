@@ -88,9 +88,10 @@ describe('Electron sidecar manager', () => {
       env: {},
     })
 
-    expect(plan.command).toContain('/Applications/App.app/Contents/Resources/app.asar.unpacked/src-tauri/binaries/claude-sidecar-')
-    expect(plan.args).toContain('/Applications/App.app/Contents/Resources/app.asar')
-    expect(plan.env.CLAUDE_H5_DIST_DIR).toBe('/Applications/App.app/Contents/Resources/app.asar.unpacked/dist')
+    const normalize = (p: string) => p.replace(/\\/g, '/')
+    expect(normalize(plan.command)).toContain('/Applications/App.app/Contents/Resources/app.asar.unpacked/src-tauri/binaries/claude-sidecar-')
+    expect(plan.args.map(normalize)).toContain('/Applications/App.app/Contents/Resources/app.asar')
+    expect(normalize(plan.env.CLAUDE_H5_DIST_DIR)).toBe('/Applications/App.app/Contents/Resources/app.asar.unpacked/dist')
   })
 
   it('passes portable config and adapter server URL through the sidecar env', () => {

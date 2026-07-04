@@ -428,7 +428,7 @@ describe('TraceSession', () => {
       .mockResolvedValueOnce({ messages: pendingMessages })
       .mockResolvedValue({ messages: baseMessages })
 
-    await renderReady(20)
+    await renderReady(200)
 
     const tree = within(screen.getByTestId('trace-tree'))
     fireEvent.click(tree.getByText('Bash'))
