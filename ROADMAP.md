@@ -1,6 +1,6 @@
 # Simple LoopClaw Roadmap
 
-This document outlines the milestones, future plans, and long-term vision for **Simple LoopClaw** (`Simple-LOOP-CLAW`). Our goal is to create the most accessible, powerful, and friendly local AI coding agent workbench for individual developers.
+This document outlines the milestones, future plans, and long-term vision for **Simple LoopClaw** (`Simple LoopClaw`). Our goal is to create the most accessible, powerful, and friendly local AI coding agent workbench for individual developers.
 
 ---
 

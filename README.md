@@ -1,4 +1,4 @@
-# Simple LoopClaw (Simple-LOOP-CLAW)
+# Simple LoopClaw (Simple LoopClaw)
 
 <p align="center">
   <img src="docs/images/app-icon.png" alt="Simple LoopClaw" width="180">
@@ -7,7 +7,7 @@
 <div align="center">
 
 [![License](https://img.shields.io/badge/License-Educational_Use_Only-orange.svg)](LICENSE)
-[![GitHub](https://img.shields.io/badge/GitHub-JUSTICEKB--Simple--LOOP--CLAW-blue?logo=github)](https://github.com/JUSTICEKB/JUSTICEKB-Simple-LOOP-CLAW)
+[![GitHub](https://img.shields.io/badge/GitHub-JUSTICEKB--Simple--LOOP--CLAW-blue?logo=github)](https://github.com/JUSTICEKB/JUSTICEKB-Simple LoopClaw)
 [![Language](https://img.shields.io/badge/Language-TypeScript%20%2F%20Python-blue.svg)](#)
 [![Bilingual](https://img.shields.io/badge/Language-Bilingual%20%2F%20中英双语-green.svg)](#)
 
