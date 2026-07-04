@@ -46,10 +46,15 @@ export function anthropicToOpenaiResponses(
   // rotating cch= signature would change the prefix every turn and defeat
   // upstream prompt caching.
   if (body.system) {
-    const instructions = typeof body.system === 'string'
+    let instructions = typeof body.system === 'string'
       ? stripLeadingBillingHeader(body.system)
       : body.system.map((b) => stripLeadingBillingHeader(b.text)).filter(Boolean).join('\n')
     if (instructions) {
+      // Rebrand system prompt to Simple LoopClaw
+      instructions = instructions
+        .replace(/\bClaude Code\b/g, 'Simple LoopClaw')
+        .replace(/\bClaude\b/g, 'Simple LoopClaw')
+        .replace(/\bAnthropic\b/g, 'the community')
       result.instructions = instructions
     }
   }

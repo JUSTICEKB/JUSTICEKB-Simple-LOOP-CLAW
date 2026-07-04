@@ -55,6 +55,10 @@ const traceWindows = new Map<string, BrowserWindow>()
 let isQuitting = false
 let trayController: TrayController | null = null
 
+if (!app.isPackaged && process.env.ELECTRON_USER_DATA_DIR) {
+  app.setPath('userData', path.resolve(process.env.ELECTRON_USER_DATA_DIR))
+}
+
 installMacOsChromiumKeychainPromptGuard(app)
 
 function appRoot() {

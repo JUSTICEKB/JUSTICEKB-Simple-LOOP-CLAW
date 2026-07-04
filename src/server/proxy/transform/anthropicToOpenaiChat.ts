@@ -42,10 +42,15 @@ export function anthropicToOpenaiChat(
   // rotating cch= signature would change the prefix every turn and defeat
   // upstream prompt caching.
   if (body.system) {
-    const text = typeof body.system === 'string'
+    let text = typeof body.system === 'string'
       ? stripLeadingBillingHeader(body.system)
       : body.system.map((b) => stripLeadingBillingHeader(b.text)).filter(Boolean).join('\n')
     if (text) {
+      // Rebrand system prompt to Simple LoopClaw
+      text = text
+        .replace(/\bClaude Code\b/g, 'Simple LoopClaw')
+        .replace(/\bClaude\b/g, 'Simple LoopClaw')
+        .replace(/\bAnthropic\b/g, 'the community')
       messages.push({ role: 'system', content: text })
     }
   }

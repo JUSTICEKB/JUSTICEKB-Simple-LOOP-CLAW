@@ -2,50 +2,42 @@
 layout: home
 
 hero:
-  name: Simple LoopClaw
-  text: 本地可运行的 Claude Code
-  tagline: 基于泄露源码修复，支持接入任意 Anthropic 兼容 API（MiniMax、OpenRouter 等）
+  name: Simple-LOOP-CLAW
+  text: 本地 AI Coding Agent 工作台
+  tagline: CLI、本地服务、Electron 桌面端、多模型 Provider 与 IM 适配器的一体化开发工作流。
   image:
     src: /images/logo-horizontal.png
-    alt: Simple LoopClaw
+    alt: Simple-LOOP-CLAW
   actions:
     - theme: brand
       text: 快速开始
       link: /guide/quick-start
     - theme: alt
       text: GitHub
-      link: https://github.com/NanmiCoder/simple-loop-claw
+      link: https://github.com/JUSTICEKB/JUSTICEKB-Simple-LOOP-CLAW
 
 features:
-  - icon: "\U0001F5A5"
-    title: 完整 TUI 交互
-    details: 与官方 Claude Code 一致的 Ink 终端界面，支持 --print 无头模式
-  - icon: "\U0001F9E0"
-    title: 记忆系统
-    details: 跨会话持久化记忆，自动提取、智能检索、AutoDream 做梦整合
-    link: /memory/
-  - icon: "\U0001F916"
-    title: 多 Agent 系统
-    details: 多代理编排、并行任务执行、Teams 协作、Worktree 隔离
-    link: /agent/
-  - icon: "\U0001F9E9"
-    title: Skills 系统
-    details: 可扩展能力插件、自定义工作流、条件激活
-    link: /skills/01-usage-guide
-  - icon: "\U0001F310"
-    title: 第三方模型支持
-    details: 接入 OpenAI、DeepSeek、Ollama 等任意兼容模型
-    link: /guide/third-party-models
-  - icon: "\U0001F4AC"
-    title: IM 接入
-    details: 在桌面端 webapp 配置 Telegram / 飞书，并通过独立 adapter 进程远程对话 Claude Code
-    link: /im/
-  - icon: "\U0001F4BB"
-    title: Computer Use
-    details: 桌面控制功能 — 截屏、鼠标、键盘操作（Python Bridge 实现）
-    link: /features/computer-use
-  - icon: "\U0001F5A5"
-    title: 桌面端
-    details: 基于 Electron + React 的图形化客户端，多标签、多会话、IM 适配器接入，支持 macOS、Windows 和 Linux
+  - icon: "🖥️"
+    title: 桌面工作台
+    details: Electron + React 可视化客户端，集中管理会话、文件、终端、权限审批和计划任务。
     link: /desktop/
+  - icon: "🌐"
+    title: 多模型 Provider
+    details: 支持 Claude Official、ChatGPT Official、DeepSeek、Kimi、MiniMax、智谱 GLM、Google Gemini、LM Studio、Ollama 和自定义接口。
+    link: /guide/third-party-models
+  - icon: "🔐"
+    title: 权限控制
+    details: 对文件写入、命令执行、工具调用等敏感动作提供可审计的审批流。
+  - icon: "💬"
+    title: IM 接入
+    details: 通过 Telegram、飞书、微信、钉钉等适配器远程驱动本地 Coding Agent。
+    link: /im/
+  - icon: "🧩"
+    title: Skills 与 MCP
+    details: 支持技能、外部工具和 Model Context Protocol 扩展。
+    link: /skills/01-usage-guide
+  - icon: "🖱️"
+    title: Computer Use
+    details: 通过桌面控制能力处理截图、鼠标、键盘和授权应用自动化。
+    link: /features/computer-use
 ---

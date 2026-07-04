@@ -1,63 +1,40 @@
 ---
-name: 使用问题咨询
-about: 咨询桌面端或 CLI 使用过程中遇到的问题
-title: '[问题] '
+name: Usage question
+about: Ask about the desktop app, CLI, providers, or local development.
+title: '[Question] '
 labels: question
 assignees: ''
 ---
 
-## 提交前确认
-<!-- 请确认以下事项 -->
+## Checklist
 
-- [ ] 我已经阅读了 [README 常见问题](https://github.com/NanmiCoder/simple-loop-claw#常见问题)
-- [ ] 我已经阅读了[第三方模型使用指南](https://github.com/NanmiCoder/simple-loop-claw/blob/main/docs/guide/third-party-models.md)（如使用第三方 provider）
-- [ ] 我已经搜索过[现有 issues](https://github.com/NanmiCoder/simple-loop-claw/issues)，确认没有重复问题
-- [ ] 我已经隐藏截图和日志中的 API Key、Token、Cookie 等敏感信息
+- [ ] I have read the [README](https://github.com/JUSTICEKB/JUSTICEKB-Simple-LOOP-CLAW).
+- [ ] I have read the [third-party model guide](https://github.com/JUSTICEKB/JUSTICEKB-Simple-LOOP-CLAW/blob/main/docs/guide/third-party-models.md) if this is a provider issue.
+- [ ] I have searched [existing issues](https://github.com/JUSTICEKB/JUSTICEKB-Simple-LOOP-CLAW/issues).
+- [ ] I have removed API keys, tokens, cookies, and other sensitive data from logs and screenshots.
 
-## 问题描述
-<!-- 清晰简洁地描述你想做什么、现在卡在哪里 -->
+## Question
 
+What are you trying to do, and where are you stuck?
 
-## 使用环境
-<!-- 桌面端问题请优先填写前 4 项；CLI 问题再补充 Bun / Node 信息 -->
+## Environment
 
-- 使用方式: 桌面端 / CLI / 其他:
-- 操作系统: Windows / macOS / Linux:
-- 系统版本: 例如 Windows 11 23H2 / macOS 15.4:
-- 桌面端版本: 例如 v0.1.8（设置页 -> 关于 中可查看）:
-- 安装来源: GitHub Release / 源码本地构建 / 其他:
-- Bun 版本（CLI 问题填写，`bun --version`）:
-- Node 版本（CLI 问题填写，`node --version`）:
+- Usage: Desktop / CLI / Other:
+- OS: Windows / macOS / Linux:
+- App version:
+- Install source: GitHub Release / source build / other:
+- Bun version, for CLI issues:
+- Node version, for CLI issues:
 
-## 使用场景
-<!-- 描述你在使用哪个功能时遇到的问题 -->
+## Related configuration
 
-- 使用功能: 例如会话对话 / Provider 配置 / 模型调用 / MCP / Skills / 远程控制:
-- API 提供商: 例如 Anthropic 官方 / OpenRouter / MiniMax / Kimi / Ollama:
-- 使用的模型:
+- Feature area: chat / provider setup / model call / MCP / Skills / IM adapter / scheduled task / other:
+- Provider:
+- Model:
+- Base URL:
 
-## 配置截图
-<!-- 请尽量提供 Provider / 模型 / Base URL 等相关配置截图；务必隐藏 API Key、Token 等敏感信息 -->
+## Logs or Screenshots
 
-
-## 操作步骤
-<!-- 请说明你是怎么操作到这个问题的 -->
-
-1.
-2.
-3.
-
-## 错误信息与日志
-<!-- 如果页面、弹窗或终端里有错误，请粘贴完整内容 -->
-
-```shell
-在此粘贴错误信息和日志
+```text
+Paste relevant redacted logs here.
 ```
-
-## 截图或录屏
-<!-- 如有，请提供截图或录屏；截图前请隐藏敏感信息 -->
-
-
----
-
-

@@ -1604,6 +1604,45 @@ describe('ProviderService', () => {
       }
     })
 
+    test('uses Gemini OpenAI compatibility URLs without adding an extra v1 segment', async () => {
+      const originalFetch = globalThis.fetch
+      const calls: string[] = []
+      globalThis.fetch = mock(async (url: string | URL | Request, _init?: RequestInit) => {
+        calls.push(String(url))
+        return new Response(JSON.stringify({
+          id: 'chatcmpl-gemini',
+          object: 'chat.completion',
+          created: 0,
+          model: 'gemini-3.5-flash',
+          choices: [{ index: 0, message: { role: 'assistant', content: 'ok' }, finish_reason: 'stop' }],
+          usage: { prompt_tokens: 1, completion_tokens: 1, total_tokens: 2 },
+        }), {
+          status: 200,
+          headers: { 'Content-Type': 'application/json' },
+        })
+      }) as typeof fetch
+
+      try {
+        const svc = new ProviderService()
+        const result = await svc.testProviderConfig({
+          baseUrl: 'https://generativelanguage.googleapis.com/v1beta/openai',
+          apiKey: 'gemini-key',
+          modelId: 'gemini-3.5-flash',
+          authStrategy: 'auth_token',
+          apiFormat: 'openai_chat',
+        })
+
+        expect(result.connectivity.success).toBe(true)
+        expect(result.proxy?.success).toBe(true)
+        expect(calls).toEqual([
+          'https://generativelanguage.googleapis.com/v1beta/openai/chat/completions',
+          'https://generativelanguage.googleapis.com/v1beta/openai/chat/completions',
+        ])
+      } finally {
+        globalThis.fetch = originalFetch
+      }
+    })
+
     test('bypasses manual proxy options when testing loopback provider endpoints', async () => {
       await fs.writeFile(
         path.join(tmpDir, 'settings.json'),

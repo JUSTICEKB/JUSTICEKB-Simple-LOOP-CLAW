@@ -2,7 +2,7 @@
 
 > 图形化的 AI Code Editor，支持多会话、多标签、IM 接入的完整桌面体验。
 
-![桌面端界面](../images/desktop_ui/01_full_ui.png)
+![桌面端界面](../images/desktop_ui/10_desktop_workspace.png)
 
 ---
 

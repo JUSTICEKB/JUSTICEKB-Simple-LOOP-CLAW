@@ -6,8 +6,6 @@
 
 ## 聊天引擎
 
-![任务列表与工具调用](../images/desktop_ui/04_tasktodo_list.png)
-
 聊天引擎是桌面端核心，负责消息收发、流式渲染和工具交互。
 
 ### 消息类型
@@ -114,8 +112,6 @@
 
 ## 提供商管理
 
-![提供商设置](../images/desktop_ui/05_settings.png)
-
 在设置 → Providers 标签页管理 AI 提供商。
 
 ### 预设
@@ -180,8 +176,6 @@
 
 ## IM 适配器
 
-![IM 适配器设置](../images/desktop_ui/07_im.png)
-
 设置 → Adapters 标签页，配置 Telegram / 飞书接入。
 
 ### 配置
@@ -208,8 +202,6 @@
 ---
 
 ## Computer Use
-
-![Computer Use 设置](../images/desktop_ui/06_settings_computer_use.png)
 
 设置 → Computer Use 标签页，查看和配置 Computer Use 功能状态。
 

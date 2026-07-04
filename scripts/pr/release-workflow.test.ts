@@ -95,10 +95,10 @@ describe('release desktop workflow', () => {
     }
 
     expect(desktopPackage.description).toBeTruthy()
-    expect(desktopPackage.homepage).toBe('https://github.com/NanmiCoder/simple-loop-claw')
-    expect(desktopPackage.author?.name).toBe('NanmiCoder')
+    expect(desktopPackage.homepage).toBe('https://github.com/JUSTICEKB/JUSTICEKB-Simple-LOOP-CLAW')
+    expect(desktopPackage.author?.name).toBe('JUSTICEKB')
     expect(desktopPackage.author?.email).toBe('justicekb@example.com')
-    expect(desktopPackage.build?.linux?.maintainer).toBe('NanmiCoder <justicekb@example.com>')
+    expect(desktopPackage.build?.linux?.maintainer).toBe('JUSTICEKB <justicekb@example.com>')
   })
 
   test('release workflow requires macOS Gatekeeper launch approval for signed builds', () => {
@@ -227,7 +227,7 @@ describe('release desktop workflow', () => {
       /missing=\(\)[\s\S]*?# Windows signing is optional:/,
     )?.[0]
     const windowsOptionalBlock = signingJob?.match(
-      /win_missing=\(\)[\s\S]*?fi\n/,
+      /win_missing=\(\)[\s\S]*?fi\r?\n/,
     )?.[0]
     expect(macRequiredBlock).not.toContain('exit 1')
     expect(windowsOptionalBlock).toContain('::warning::')
@@ -258,7 +258,7 @@ describe('release desktop workflow', () => {
     }
     expect(buildJob).toContain('target_triple: aarch64-pc-windows-msvc')
     expect(buildJob).toContain('builder_args: --win nsis --arm64')
-    expect(buildJob).toContain('Claude-Code-LoopClaw-${APP_VERSION}-win-arm64.exe')
+    expect(buildJob).toContain('Simple-LoopClaw-${APP_VERSION}-win-arm64.exe')
     expect(buildJob).toContain('Upload release artifacts for final publish')
     expect(buildJob).toContain('actions/upload-artifact@v4')
     expect(buildJob).toContain('name: desktop-release-artifacts-${{ matrix.label }}')
@@ -305,23 +305,23 @@ describe('release desktop workflow', () => {
       }
     }
     const version = desktopPackage.version
-    expect(desktopPackage.build.artifactName).toBe('Claude-Code-LoopClaw-${version}-${os}-${arch}.${ext}')
+    expect(desktopPackage.build.artifactName).toBe('Simple-LoopClaw-${version}-${os}-${arch}.${ext}')
 
     const expectedReleaseAssets = [
-      `Claude-Code-LoopClaw-${version}-mac-arm64.dmg`,
-      `Claude-Code-LoopClaw-${version}-mac-arm64.dmg.blockmap`,
-      `Claude-Code-LoopClaw-${version}-mac-arm64.zip`,
-      `Claude-Code-LoopClaw-${version}-mac-arm64.zip.blockmap`,
-      `Claude-Code-LoopClaw-${version}-mac-x64.dmg`,
-      `Claude-Code-LoopClaw-${version}-mac-x64.dmg.blockmap`,
-      `Claude-Code-LoopClaw-${version}-mac-x64.zip`,
-      `Claude-Code-LoopClaw-${version}-mac-x64.zip.blockmap`,
-      `Claude-Code-LoopClaw-${version}-linux-x86_64.AppImage`,
-      `Claude-Code-LoopClaw-${version}-linux-amd64.deb`,
-      `Claude-Code-LoopClaw-${version}-linux-arm64.AppImage`,
-      `Claude-Code-LoopClaw-${version}-linux-arm64.deb`,
-      `Claude-Code-LoopClaw-${version}-win-x64.exe`,
-      `Claude-Code-LoopClaw-${version}-win-x64.exe.blockmap`,
+      `Simple-LoopClaw-${version}-mac-arm64.dmg`,
+      `Simple-LoopClaw-${version}-mac-arm64.dmg.blockmap`,
+      `Simple-LoopClaw-${version}-mac-arm64.zip`,
+      `Simple-LoopClaw-${version}-mac-arm64.zip.blockmap`,
+      `Simple-LoopClaw-${version}-mac-x64.dmg`,
+      `Simple-LoopClaw-${version}-mac-x64.dmg.blockmap`,
+      `Simple-LoopClaw-${version}-mac-x64.zip`,
+      `Simple-LoopClaw-${version}-mac-x64.zip.blockmap`,
+      `Simple-LoopClaw-${version}-linux-x86_64.AppImage`,
+      `Simple-LoopClaw-${version}-linux-amd64.deb`,
+      `Simple-LoopClaw-${version}-linux-arm64.AppImage`,
+      `Simple-LoopClaw-${version}-linux-arm64.deb`,
+      `Simple-LoopClaw-${version}-win-x64.exe`,
+      `Simple-LoopClaw-${version}-win-x64.exe.blockmap`,
     ]
     const namespacedMetadata = [
       'latest-mac-macOS-ARM64.yml',
@@ -365,15 +365,15 @@ describe('release desktop workflow', () => {
     const buildJob = extractJob(workflow, 'build')
     const publishJob = extractJob(workflow, 'publish-release')
     const expectedFiles = [
-      'Claude-Code-LoopClaw-${APP_VERSION}-mac-arm64.dmg',
-      'Claude-Code-LoopClaw-${APP_VERSION}-mac-arm64.zip',
-      'Claude-Code-LoopClaw-${APP_VERSION}-mac-x64.dmg',
-      'Claude-Code-LoopClaw-${APP_VERSION}-mac-x64.zip',
-      'Claude-Code-LoopClaw-${APP_VERSION}-linux-x86_64.AppImage',
-      'Claude-Code-LoopClaw-${APP_VERSION}-linux-amd64.deb',
-      'Claude-Code-LoopClaw-${APP_VERSION}-linux-arm64.AppImage',
-      'Claude-Code-LoopClaw-${APP_VERSION}-linux-arm64.deb',
-      'Claude-Code-LoopClaw-${APP_VERSION}-win-x64.exe',
+      'Simple-LoopClaw-${APP_VERSION}-mac-arm64.dmg',
+      'Simple-LoopClaw-${APP_VERSION}-mac-arm64.zip',
+      'Simple-LoopClaw-${APP_VERSION}-mac-x64.dmg',
+      'Simple-LoopClaw-${APP_VERSION}-mac-x64.zip',
+      'Simple-LoopClaw-${APP_VERSION}-linux-x86_64.AppImage',
+      'Simple-LoopClaw-${APP_VERSION}-linux-amd64.deb',
+      'Simple-LoopClaw-${APP_VERSION}-linux-arm64.AppImage',
+      'Simple-LoopClaw-${APP_VERSION}-linux-arm64.deb',
+      'Simple-LoopClaw-${APP_VERSION}-win-x64.exe',
     ]
 
     for (const file of expectedFiles) {
@@ -405,8 +405,8 @@ describe('release desktop workflow', () => {
     expect(desktopPackage.build.publish).toEqual([
       {
         provider: 'github',
-        owner: 'NanmiCoder',
-        repo: 'simple-loop-claw',
+        owner: 'JUSTICEKB',
+        repo: 'JUSTICEKB-Simple-LOOP-CLAW',
       },
     ])
     expect(desktopPackage.build.mac?.publish).toBeUndefined()

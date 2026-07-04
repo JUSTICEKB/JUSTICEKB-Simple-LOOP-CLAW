@@ -69,6 +69,7 @@ describe('provider presets API', () => {
     const minimax = PROVIDER_PRESETS.find((preset) => preset.id === 'minimax')
     const jiekouai = PROVIDER_PRESETS.find((preset) => preset.id === 'jiekouai')
     const shengsuanyun = PROVIDER_PRESETS.find((preset) => preset.id === 'shengsuanyun')
+    const gemini = PROVIDER_PRESETS.find((preset) => preset.id === 'gemini')
 
     expect(lmstudio?.baseUrl).toBe('http://localhost:1234')
     expect(lmstudio?.apiFormat).toBe('anthropic')
@@ -114,6 +115,14 @@ describe('provider presets API', () => {
     expect(shengsuanyun?.defaultModels.main).toBe('anthropic/claude-sonnet-4.6')
     expect(shengsuanyun?.defaultModels.haiku).toBe('anthropic/claude-haiku-4.5:thinking')
     expect(shengsuanyun?.modelContextWindows?.['anthropic/claude-sonnet-4.6']).toBe(1000000)
+    expect(gemini?.baseUrl).toBe('https://generativelanguage.googleapis.com/v1beta/openai')
+    expect(gemini?.apiFormat).toBe('openai_chat')
+    expect(gemini?.authStrategy).toBe('auth_token')
+    expect(gemini?.defaultModels.main).toBe('gemini-3.5-flash')
+    expect(gemini?.defaultModels.haiku).toBe('gemini-3.1-flash-lite')
+    expect(gemini?.defaultEnv?.ANTHROPIC_DEFAULT_SONNET_MODEL_SUPPORTED_CAPABILITIES).toBe(
+      'thinking,effort,adaptive_thinking',
+    )
   })
 
   test('configured presets can expose optional API key and promo metadata', () => {
@@ -125,6 +134,7 @@ describe('provider presets API', () => {
     const minimax = PROVIDER_PRESETS.find((preset) => preset.id === 'minimax')
     const jiekouai = PROVIDER_PRESETS.find((preset) => preset.id === 'jiekouai')
     const shengsuanyun = PROVIDER_PRESETS.find((preset) => preset.id === 'shengsuanyun')
+    const gemini = PROVIDER_PRESETS.find((preset) => preset.id === 'gemini')
     const custom = PROVIDER_PRESETS.find((preset) => preset.id === 'custom')
 
     expect(lmstudio?.needsApiKey).toBe(false)
@@ -166,6 +176,9 @@ describe('provider presets API', () => {
       ANTHROPIC_DEFAULT_SONNET_MODEL_SUPPORTED_CAPABILITIES: 'none',
     })
     expect(shengsuanyun?.modelContextWindows?.['anthropic/claude-opus-4.7']).toBe(1000000)
+    expect(gemini?.apiKeyUrl).toBe('https://aistudio.google.com/app/apikey')
+    expect(gemini?.modelContextWindows?.['gemini-3.5-flash']).toBe(1000000)
+    expect(gemini?.modelContextWindows?.['gemini-3.1-flash-lite']).toBe(1000000)
     expect(custom?.promoText).toBeUndefined()
     expect(custom?.authStrategy).toBe('auth_token')
     expect(custom?.defaultEnv).toBeUndefined()
@@ -207,7 +220,7 @@ describe('provider presets API', () => {
   test('provider presets carry docs-backed context windows for current coding models', () => {
     const byId = new Map(PROVIDER_PRESETS.map((preset) => [preset.id, preset]))
 
-    for (const id of ['deepseek', 'zhipuglm', 'kimi', 'minimax']) {
+    for (const id of ['deepseek', 'zhipuglm', 'kimi', 'minimax', 'gemini']) {
       const preset = byId.get(id)!
       expect(preset.modelContextWindows?.[preset.defaultModels.main]).toBeGreaterThan(0)
     }

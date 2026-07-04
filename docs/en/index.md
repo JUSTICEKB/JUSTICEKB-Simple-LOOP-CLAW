@@ -2,39 +2,42 @@
 layout: home
 
 hero:
-  name: Simple LoopClaw
-  text: Locally Runnable Claude Code
-  tagline: Repaired from leaked source, supports any Anthropic-compatible API endpoint (MiniMax, OpenRouter, etc.)
+  name: Simple-LOOP-CLAW
+  text: Local AI Coding Agent Workbench
+  tagline: A unified workflow for the CLI, local server, Electron desktop app, model providers, and IM adapters.
   image:
     src: /images/logo-horizontal.png
-    alt: Simple LoopClaw
+    alt: Simple-LOOP-CLAW
   actions:
     - theme: brand
       text: Quick Start
       link: /en/guide/quick-start
     - theme: alt
       text: GitHub
-      link: https://github.com/NanmiCoder/simple-loop-claw
+      link: https://github.com/JUSTICEKB/JUSTICEKB-Simple-LOOP-CLAW
 
 features:
-  - icon: "\U0001F5A5"
-    title: Full TUI Experience
-    details: Ink terminal UI matching the official Claude Code interface, with --print headless mode
-  - icon: "\U0001F9E0"
-    title: Memory System
-    details: Cross-session persistent memory with auto-extraction, smart retrieval, and AutoDream consolidation
-  - icon: "\U0001F916"
-    title: Multi-Agent System
-    details: Agent orchestration, parallel tasks, Teams collaboration, Worktree isolation
-  - icon: "\U0001F9E9"
-    title: Skills System
-    details: Extensible capability plugins, custom workflows, conditional activation
-  - icon: "\U0001F4BB"
-    title: Computer Use
-    details: Desktop control — screenshots, mouse, and keyboard automation
-    link: /en/features/computer-use
-  - icon: "\U0001F310"
-    title: Third-Party Models
-    details: Support for OpenAI, DeepSeek, Ollama, and any compatible model
+  - icon: "🖥️"
+    title: Desktop Workbench
+    details: Electron + React client for sessions, files, terminals, permission gates, and scheduled tasks.
+    link: /en/desktop/
+  - icon: "🌐"
+    title: Model Providers
+    details: Presets for Claude Official, ChatGPT Official, DeepSeek, Kimi, MiniMax, Zhipu GLM, Google Gemini, LM Studio, Ollama, and custom endpoints.
     link: /en/guide/third-party-models
+  - icon: "🔐"
+    title: Permission Gates
+    details: Auditable approvals for file writes, shell commands, and sensitive tool calls.
+  - icon: "💬"
+    title: IM Adapters
+    details: Drive the local Coding Agent remotely from Telegram, Feishu, WeChat, DingTalk, and related adapters.
+    link: /en/channel/
+  - icon: "🧩"
+    title: Skills and MCP
+    details: Extend workflows with Skills, external tools, and Model Context Protocol integrations.
+    link: /en/skills/01-usage-guide
+  - icon: "🖱️"
+    title: Computer Use
+    details: Desktop control for screenshots, mouse, keyboard, and authorized app automation.
+    link: /en/features/computer-use
 ---

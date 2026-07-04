@@ -1144,7 +1144,7 @@ export const zh: Record<TranslationKey, string> = {
 
   // ─── Empty Session ──────────────────────────────────────
   'empty.title': '新建会话',
-  'empty.subtitle': '开始一个新的编码会话。Claude 已准备好帮你构建、调试和架构你的项目。',
+  'empty.subtitle': '开始一个新的编码会话。Simple LoopClaw 已准备好帮你构建、调试和架构你的项目。',
   'empty.placeholder': '随便问点什么...',
   'empty.addFiles': '添加文件或图片',
   'empty.slashCommands': '斜杠命令',
@@ -1175,7 +1175,7 @@ export const zh: Record<TranslationKey, string> = {
   'repoLaunch.checkedOutWarning': '选中的分支已在其他工作树中检出。直接启动可能会被 Git 阻止；使用“独立工作树”可以避免切换当前目录。',
 
   // ─── Chat Input ──────────────────────────────────────
-  'chat.placeholder': '让 Claude 编辑、调试或解释代码...',
+  'chat.placeholder': '让 Simple LoopClaw 编辑、调试或解释代码...',
   'chat.placeholderMissing': '此会话指向的工作目录缺失。请新建会话或选择其他项目。',
   'chat.addFiles': '添加文件或图片',
   'chat.dropFilesTitle': '松手添加文件',

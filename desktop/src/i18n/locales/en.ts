@@ -1142,7 +1142,7 @@ export const en = {
 
   // ─── Empty Session ──────────────────────────────────────
   'empty.title': 'New session',
-  'empty.subtitle': 'Start a fresh coding session. Claude is ready to help you build, debug, and architect your project.',
+  'empty.subtitle': 'Start a fresh coding session. Simple LoopClaw is ready to help you build, debug, and architect your project.',
   'empty.placeholder': 'Ask anything...',
   'empty.addFiles': 'Add files or photos',
   'empty.slashCommands': 'Slash commands',
@@ -1173,7 +1173,7 @@ export const en = {
   'repoLaunch.checkedOutWarning': 'Selected branch is already checked out in another worktree. Direct launch may be blocked by Git; use "Isolated worktree" to avoid changing directories.',
 
   // ─── Chat Input ──────────────────────────────────────
-  'chat.placeholder': 'Ask Claude to edit, debug or explain...',
+  'chat.placeholder': 'Ask Simple LoopClaw to edit, debug or explain...',
   'chat.placeholderMissing': 'This session points to a missing workspace. Create a new session or pick another project.',
   'chat.addFiles': 'Add files or photos',
   'chat.dropFilesTitle': 'Drop files here',
