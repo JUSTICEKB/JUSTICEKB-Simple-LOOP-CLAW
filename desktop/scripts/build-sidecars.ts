@@ -16,10 +16,12 @@ const bunTarget = mapTargetTripleToBun(targetTriple)
 // 编译前先扫一遍 src/ 把所有缺失的 ant-internal 模块在磁盘上 stub 出来。
 // 见 desktop/scripts/scan-missing-imports.ts。
 console.log('[build-sidecars] scanning for missing imports...')
-const scanProc = Bun.spawn(
-  ['bun', 'run', path.join(desktopRoot, 'scripts/scan-missing-imports.ts')],
-  { cwd: repoRoot, stdout: 'inherit', stderr: 'inherit' },
-)
+const shellCmd = process.env.ComSpec ?? 'C:\\Windows\\System32\\cmd.exe'
+const bunArgs = process.platform === 'win32'
+  ? [shellCmd, '/c', 'bun', 'run', path.join(desktopRoot, 'scripts/scan-missing-imports.ts')]
+  : ['bun', 'run', path.join(desktopRoot, 'scripts/scan-missing-imports.ts')]
+
+const scanProc = Bun.spawn(bunArgs, { cwd: repoRoot, stdout: 'inherit', stderr: 'inherit' })
 const scanExit = await scanProc.exited
 if (scanExit !== 0) {
   throw new Error(`[build-sidecars] scan-missing-imports failed (exit ${scanExit})`)
