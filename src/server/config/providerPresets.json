@@ -183,26 +183,32 @@
   {
     "id": "gemini",
     "name": "Google Gemini",
-    "baseUrl": "https://generativelanguage.googleapis.com/v1beta",
+    "baseUrl": "https://generativelanguage.googleapis.com/v1beta/openai",
     "apiFormat": "openai_chat",
     "defaultModels": {
-      "main": "gemini-2.5-pro",
-      "haiku": "gemini-2.5-flash",
-      "sonnet": "gemini-2.5-pro",
-      "opus": "gemini-2.5-pro"
+      "main": "gemini-3.5-flash",
+      "haiku": "gemini-3.1-flash-lite",
+      "sonnet": "gemini-3.5-flash",
+      "opus": "gemini-3.5-flash"
     },
     "needsApiKey": true,
     "websiteUrl": "https://aistudio.google.com",
     "apiKeyUrl": "https://aistudio.google.com/app/apikey",
     "authStrategy": "auth_token",
     "defaultEnv": {
-      "CLAUDE_CODE_AUTO_COMPACT_WINDOW": "1000000"
+      "CLAUDE_CODE_AUTO_COMPACT_WINDOW": "1000000",
+      "ANTHROPIC_DEFAULT_HAIKU_MODEL_SUPPORTED_CAPABILITIES": "thinking,effort,adaptive_thinking",
+      "ANTHROPIC_DEFAULT_SONNET_MODEL_SUPPORTED_CAPABILITIES": "thinking,effort,adaptive_thinking",
+      "ANTHROPIC_DEFAULT_OPUS_MODEL_SUPPORTED_CAPABILITIES": "thinking,effort,adaptive_thinking"
     },
     "modelContextWindows": {
+      "gemini-3.5-flash": 1000000,
+      "gemini-3-flash-preview": 1000000,
+      "gemini-3.1-pro-preview": 1000000,
+      "gemini-3.1-flash-lite": 1000000,
       "gemini-2.5-pro": 1000000,
       "gemini-2.5-flash": 1000000,
-      "gemini-2.0-pro-exp": 1000000,
-      "gemini-2.0-flash": 1000000
+      "gemini-2.5-flash-lite": 1000000
     }
   },
   {
