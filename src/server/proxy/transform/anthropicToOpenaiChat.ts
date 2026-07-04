@@ -24,6 +24,7 @@ type OpenAIChatTransformOptions = {
   passThinkingToggle?: boolean
   passSamplingParams?: boolean
   imageContentMode?: OpenAIChatImageContentMode
+  omitStreamOptions?: boolean
 }
 
 const OMITTED_IMAGE_TEXT = '[Image omitted: this OpenAI-compatible chat endpoint only supports text content.]'
@@ -62,7 +63,7 @@ export function anthropicToOpenaiChat(
   }
 
   // Many OpenAI-compatible servers omit usage on streams unless asked.
-  if (result.stream) {
+  if (result.stream && !options.omitStreamOptions) {
     result.stream_options = { include_usage: true }
   }
 

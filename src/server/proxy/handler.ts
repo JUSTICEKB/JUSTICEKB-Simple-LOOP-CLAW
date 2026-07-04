@@ -18,6 +18,7 @@ import { openaiResponsesToAnthropic } from './transform/openaiResponsesToAnthrop
 import { openaiChatStreamToAnthropic } from './streaming/openaiChatStreamToAnthropic.js'
 import { openaiResponsesStreamToAnthropic } from './streaming/openaiResponsesStreamToAnthropic.js'
 import type { AnthropicRequest } from './transform/types.js'
+import { buildOpenAIUpstreamUrl } from './upstreamEndpoint.js'
 import { getProxyFetchOptions } from '../../utils/proxy.js'
 import {
   getNetworkProxyFetchOptions,
@@ -271,8 +272,9 @@ async function handleOpenaiChat(
     roundTripReasoningContent: deepSeekCompatible,
     passThinkingToggle: deepSeekCompatible,
     imageContentMode: shouldUseTextOnlyOpenAIChatContent(baseUrl) ? 'text_only' : 'vision',
+    omitStreamOptions: baseUrl.includes('googleapis.com'),
   })
-  const url = `${baseUrl}/v1/chat/completions`
+  const url = buildOpenAIUpstreamUrl(baseUrl, 'chat_completions')
   const upstreamRequestHeaders = {
     'Content-Type': 'application/json',
     Authorization: `Bearer ${apiKey}`,
@@ -441,7 +443,7 @@ async function handleOpenaiResponses(
   promptCacheKey?: string,
 ): Promise<Response> {
   const transformed = anthropicToOpenaiResponses(body, { cacheKey: promptCacheKey })
-  const url = `${baseUrl}/v1/responses`
+  const url = buildOpenAIUpstreamUrl(baseUrl, 'responses')
   const upstreamRequestHeaders = {
     'Content-Type': 'application/json',
     Authorization: `Bearer ${apiKey}`,
