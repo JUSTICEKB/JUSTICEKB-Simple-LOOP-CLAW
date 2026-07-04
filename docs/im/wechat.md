@@ -22,13 +22,11 @@
 4. 等待页面显示绑定成功。
 5. 点击保存，或确认当前配置已经写入本地。
 
-![微信未绑定时的扫码入口](../images/im/wechat/wechat01.png)
 
 扫码成功后，桌面端会把微信网关返回的 `accountId`、`botToken`、`baseUrl` 和 `userId` 写入 `~/.claude/adapters.json` 的 `wechat` 配置。发布版桌面端会重启 adapter sidecar，让新凭据立即生效。
 
 绑定成功后，微信标签页会显示「微信已绑定」，并提供「重新扫码」和「解除微信绑定」：
 
-![微信绑定成功状态](../images/im/wechat/wechat03.png)
 
 注意：扫码绑定的是机器人账号凭据，不等于把所有微信用户都授权了。用户访问仍然走 `allowedUsers + pairedUsers` 授权模型。
 
@@ -40,7 +38,6 @@
 2. 把 6 位配对码发给微信里的机器人。
 3. 看到配对成功提示后，就可以直接发送自然语言消息。
 
-![微信里发送配对码并开始对话](../images/im/wechat/wechat02.jpg)
 
 配对码有效期 60 分钟，一次性使用。重新生成配对码后，旧码会失效。
 

@@ -14,11 +14,9 @@
 
 👉 [立即创建飞书机器人](https://open.feishu.cn/page/openclaw?form=multiAgent)
 
-![一键创建入口](../images/im/feishu/01-create-app-entry.png)
 
 随便给你自己的机器人取一个名字，点击创建：
 
-![取名并创建](../images/im/feishu/02-name-bot.png)
 
 创建成功后，把 **App ID** 和 **App Secret** 保存下来，接着去配置机器人菜单。
 
@@ -26,33 +24,26 @@
 
 进入[飞书开发者后台](https://open.feishu.cn/app?lang=zh-CN)，选择刚创建的机器人，进入机器人配置页：
 
-![开发者后台](../images/im/feishu/03-dev-console.png)
 
 进入「机器人菜单」开始配置：
 
-![进入菜单配置](../images/im/feishu/04-menu-enter.png)
 
 依次添加 3 个命令：
 
 **/projects** — 切换最近使用的项目
 
-![菜单 /projects](../images/im/feishu/05-menu-projects.png)
 
 **/new** — 开启新对话
 
-![菜单 /new](../images/im/feishu/06-menu-new.png)
 
 **/clear** — 清空上下文
 
-![菜单 /clear](../images/im/feishu/07-menu-clear.png)
 
 三个都配好后点击保存：
 
-![保存菜单](../images/im/feishu/08-menu-save.png)
 
 最后点击「创建新版本并发布」让菜单生效：
 
-![创建版本并发布](../images/im/feishu/09-publish-version.png)
 
 **命令作用说明：**
 
@@ -66,15 +57,12 @@
 
 打开桌面端 `设置 → IM 接入 → 飞书`，把前面拿到的两把钥匙填进去：
 
-![填写 App ID / App Secret](../images/im/feishu/10-fill-app-credentials.png)
 
 ### 3.2 生成配对码
 
 点击「生成配对码」按钮，得到 6 位码：
 
-![生成配对码](../images/im/feishu/11-generate-pairing-code.png)
 
-![配对码详情](../images/im/feishu/12-pairing-code-detail.png)
 
 **记得点保存！！**
 
@@ -82,13 +70,10 @@
 
 随便给刚才创建的机器人发送一条消息，按提示把上一步的 6 位配对码发给它：
 
-![在飞书里发配对码](../images/im/feishu/13-send-code-in-feishu.png)
 
 看到配对成功提示后，就可以用飞书在手机上远程驱动桌面端 Simple LoopClaw 了：
 
-![配对成功](../images/im/feishu/14-pair-success.png)
 
-![可以开始对话](../images/im/feishu/15-pair-done.png)
 
 ## 支持的命令
 

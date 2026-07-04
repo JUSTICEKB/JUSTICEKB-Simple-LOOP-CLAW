@@ -12,11 +12,9 @@ Telegram 方案适合个人私聊远程使用。当前实现只处理 `private c
 
 在 Telegram 里搜索官方账号 **@BotFather**：
 
-![搜索 BotFather](../images/im/telegram/01-search-botfather.png)
 
 给它发送 `/newbot`：
 
-![发送 /newbot](../images/im/telegram/02-newbot-command.png)
 
 按提示走完三步：
 
@@ -24,7 +22,6 @@ Telegram 方案适合个人私聊远程使用。当前实现只处理 `private c
 - **取一个机器人用户名**，要求全英文字母，且必须以 `_bot` 结尾，例如 `jiang_cc_hah_bot`
 - 创建成功后，复制 BotFather 返回的 **Bot Token**
 
-![复制 Bot Token](../images/im/telegram/03-bot-token.png)
 
 ## 2. 在 Simple LoopClaw 桌面端填写
 
@@ -32,19 +29,16 @@ Telegram 方案适合个人私聊远程使用。当前实现只处理 `private c
 
 打开桌面端 `设置 → IM 接入 → Telegram`，把上一步的 Bot Token 填进去：
 
-![填写 Bot Token](../images/im/telegram/04-fill-bot-token.png)
 
 ### 2.2 生成配对码
 
 点击「生成配对码」按钮，拿到 6 位配对码后点击保存：
 
-![生成配对码](../images/im/telegram/05-generate-pairing-code.png)
 
 ## 3. 机器人与桌面端配对
 
 随便给刚才创建的机器人发送一条消息，按提示输入配对码。看到下面的配对成功提示，就可以从手机 Telegram 远程驱动桌面端 Simple LoopClaw 了：
 
-![配对成功](../images/im/telegram/06-pair-success.png)
 
 ## 支持的命令
 
