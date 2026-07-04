@@ -181,6 +181,31 @@
     }
   },
   {
+    "id": "gemini",
+    "name": "Google Gemini",
+    "baseUrl": "https://generativelanguage.googleapis.com/v1beta",
+    "apiFormat": "openai_chat",
+    "defaultModels": {
+      "main": "gemini-2.5-pro",
+      "haiku": "gemini-2.5-flash",
+      "sonnet": "gemini-2.5-pro",
+      "opus": "gemini-2.5-pro"
+    },
+    "needsApiKey": true,
+    "websiteUrl": "https://aistudio.google.com",
+    "apiKeyUrl": "https://aistudio.google.com/app/apikey",
+    "authStrategy": "auth_token",
+    "defaultEnv": {
+      "CLAUDE_CODE_AUTO_COMPACT_WINDOW": "1000000"
+    },
+    "modelContextWindows": {
+      "gemini-2.5-pro": 1000000,
+      "gemini-2.5-flash": 1000000,
+      "gemini-2.0-pro-exp": 1000000,
+      "gemini-2.0-flash": 1000000
+    }
+  },
+  {
     "id": "lmstudio",
     "name": "LM Studio",
     "baseUrl": "http://localhost:1234",
