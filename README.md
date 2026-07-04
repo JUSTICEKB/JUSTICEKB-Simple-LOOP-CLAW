@@ -33,11 +33,7 @@ Simple-LOOP-CLAW 是一个本地 AI Coding Agent 工作台，包含 CLI、本地
 <table>
   <tr>
     <td align="center" width="50%"><img src="docs/images/desktop_ui/10_desktop_workspace.png" alt="主开发工作台"><br><b>主开发工作台 (Sessions & Files)</b></td>
-    <td align="center" width="50%"><img src="docs/images/desktop_ui/02_edit_code.png" alt="可视化代码对比"><br><b>可视化代码对比与 Diff 视图</b></td>
-  </tr>
-  <tr>
-    <td align="center" width="50%"><img src="docs/images/desktop_ui/03_ask_question_and_permission.png" alt="权限审批"><br><b>权限控制与 AI 审批流</b></td>
-    <td align="center" width="50%"><img src="docs/images/desktop_ui/08_scheduled_task.png" alt="计划任务"><br><b>计划任务与用量统计面板</b></td>
+    <td align="center" width="50%"><img src="docs/images/desktop_ui/08_scheduled_task.png" alt="计划任务与用量统计面板"><br><b>计划任务与用量统计面板</b></td>
   </tr>
 </table>
 

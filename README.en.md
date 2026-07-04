@@ -33,10 +33,6 @@ These screenshots are repository-local desktop preview assets.
 <table>
   <tr>
     <td align="center" width="50%"><img src="docs/images/desktop_ui/10_desktop_workspace.png" alt="Developer workspace"><br><b>Developer Workspace (Sessions & Files)</b></td>
-    <td align="center" width="50%"><img src="docs/images/desktop_ui/02_edit_code.png" alt="Visual diff"><br><b>Visual Code Diff Viewer</b></td>
-  </tr>
-  <tr>
-    <td align="center" width="50%"><img src="docs/images/desktop_ui/03_ask_question_and_permission.png" alt="Permission gate"><br><b>Permission Gate</b></td>
     <td align="center" width="50%"><img src="docs/images/desktop_ui/08_scheduled_task.png" alt="Scheduled tasks"><br><b>Usage & Scheduled Tasks</b></td>
   </tr>
 </table>

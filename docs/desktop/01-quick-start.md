@@ -168,8 +168,6 @@ AI 回复时实时流式展示，支持：
 
 ## 四、权限控制
 
-![权限请求与 AI 提问](../images/desktop_ui/03_ask_question_and_permission.png)
-
 Claude Code 在执行文件修改、Shell 命令等操作前，会请求你的权限。
 
 ### 权限请求对话框
