@@ -1,5 +1,5 @@
 /**
- * Haha OAuth REST API
+ * LoopClaw OAuth REST API
  *
  * POST   /api/loopclaw-oauth/start    — 生成 PKCE+state,返回 authorize URL
  * GET    /callback                — 用户浏览器 redirect 到此,完成 token 交换
@@ -24,7 +24,7 @@ function html(body: string): Response {
   })
 }
 
-export async function handleHahaOAuthApi(
+export async function handleLoopClawOAuthApi(
   req: Request,
   url: URL,
   segments: string[],
@@ -53,7 +53,7 @@ export async function handleHahaOAuthApi(
     }
 
     if (action === 'callback' && req.method === 'GET') {
-      return handleHahaOAuthCallback(url)
+      return handleLoopClawOAuthCallback(url)
     }
 
     if ((action === undefined || action === 'status') && req.method === 'GET') {
@@ -80,7 +80,7 @@ export async function handleHahaOAuthApi(
   }
 }
 
-export async function handleHahaOAuthCallback(url: URL): Promise<Response> {
+export async function handleLoopClawOAuthCallback(url: URL): Promise<Response> {
   const code = url.searchParams.get('code')
   const state = url.searchParams.get('state')
   const error = url.searchParams.get('error')

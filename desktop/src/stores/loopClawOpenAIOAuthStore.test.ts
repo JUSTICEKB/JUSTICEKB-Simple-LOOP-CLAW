@@ -14,9 +14,9 @@ vi.mock('../api/loopClawOpenAIOAuth', () => ({
   },
 }))
 
-import { useHahaOpenAIOAuthStore } from './loopClawOpenAIOAuthStore'
+import { useLoopClawOpenAIOAuthStore } from './loopClawOpenAIOAuthStore'
 
-const initialState = useHahaOpenAIOAuthStore.getState()
+const initialState = useLoopClawOpenAIOAuthStore.getState()
 
 describe('loopClawOpenAIOAuthStore', () => {
   beforeEach(() => {
@@ -24,7 +24,7 @@ describe('loopClawOpenAIOAuthStore', () => {
     startMock.mockReset()
     statusMock.mockReset()
     logoutMock.mockReset()
-    useHahaOpenAIOAuthStore.setState({
+    useLoopClawOpenAIOAuthStore.setState({
       ...initialState,
       status: null,
       isPolling: false,
@@ -34,8 +34,8 @@ describe('loopClawOpenAIOAuthStore', () => {
   })
 
   afterEach(() => {
-    useHahaOpenAIOAuthStore.getState().stopPolling()
-    useHahaOpenAIOAuthStore.setState(initialState)
+    useLoopClawOpenAIOAuthStore.getState().stopPolling()
+    useLoopClawOpenAIOAuthStore.setState(initialState)
     vi.useRealTimers()
   })
 
@@ -45,10 +45,10 @@ describe('loopClawOpenAIOAuthStore', () => {
       state: 'openai-state',
     })
 
-    const result = await useHahaOpenAIOAuthStore.getState().login()
+    const result = await useLoopClawOpenAIOAuthStore.getState().login()
 
     expect(result.authorizeUrl).toContain('/callback/openai')
-    expect(useHahaOpenAIOAuthStore.getState().isPolling).toBe(false)
+    expect(useLoopClawOpenAIOAuthStore.getState().isPolling).toBe(false)
   })
 
   it('startPolling stops after OpenAI OAuth status becomes logged in', async () => {
@@ -61,24 +61,24 @@ describe('loopClawOpenAIOAuthStore', () => {
         accountId: 'acct_123',
       })
 
-    useHahaOpenAIOAuthStore.getState().startPolling()
-    expect(useHahaOpenAIOAuthStore.getState().isPolling).toBe(true)
+    useLoopClawOpenAIOAuthStore.getState().startPolling()
+    expect(useLoopClawOpenAIOAuthStore.getState().isPolling).toBe(true)
 
     await vi.advanceTimersByTimeAsync(2_000)
-    expect(useHahaOpenAIOAuthStore.getState().isPolling).toBe(true)
+    expect(useLoopClawOpenAIOAuthStore.getState().isPolling).toBe(true)
 
     await vi.advanceTimersByTimeAsync(2_000)
-    expect(useHahaOpenAIOAuthStore.getState().status).toMatchObject({
+    expect(useLoopClawOpenAIOAuthStore.getState().status).toMatchObject({
       loggedIn: true,
       email: 'user@example.com',
       accountId: 'acct_123',
     })
-    expect(useHahaOpenAIOAuthStore.getState().isPolling).toBe(false)
+    expect(useLoopClawOpenAIOAuthStore.getState().isPolling).toBe(false)
   })
 
   it('logout clears status and stops polling', async () => {
     logoutMock.mockResolvedValue({ ok: true })
-    useHahaOpenAIOAuthStore.setState({
+    useLoopClawOpenAIOAuthStore.setState({
       status: {
         loggedIn: true,
         expiresAt: Date.now() + 60_000,
@@ -86,12 +86,12 @@ describe('loopClawOpenAIOAuthStore', () => {
         accountId: 'acct_123',
       },
     })
-    useHahaOpenAIOAuthStore.getState().startPolling()
+    useLoopClawOpenAIOAuthStore.getState().startPolling()
 
-    await useHahaOpenAIOAuthStore.getState().logout()
+    await useLoopClawOpenAIOAuthStore.getState().logout()
 
     expect(logoutMock).toHaveBeenCalledTimes(1)
-    expect(useHahaOpenAIOAuthStore.getState().status).toEqual({ loggedIn: false })
-    expect(useHahaOpenAIOAuthStore.getState().isPolling).toBe(false)
+    expect(useLoopClawOpenAIOAuthStore.getState().status).toEqual({ loggedIn: false })
+    expect(useLoopClawOpenAIOAuthStore.getState().isPolling).toBe(false)
   })
 })

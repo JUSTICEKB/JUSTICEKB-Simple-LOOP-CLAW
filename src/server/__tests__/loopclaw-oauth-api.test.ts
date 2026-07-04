@@ -6,7 +6,7 @@ import { describe, test, expect, beforeEach, afterEach } from 'bun:test'
 import * as fs from 'fs/promises'
 import * as path from 'path'
 import * as os from 'os'
-import { handleHahaOAuthApi } from '../api/loopclaw-oauth.js'
+import { handleLoopClawOAuthApi } from '../api/loopclaw-oauth.js'
 import { loopClawOAuthService } from '../services/loopClawOAuthService.js'
 
 let tmpDir: string
@@ -50,7 +50,7 @@ describe('POST /api/loopclaw-oauth/start', () => {
     const { req, url, segments } = buildReq('POST', '/api/loopclaw-oauth/start', {
       serverPort: 54321,
     })
-    const res = await handleHahaOAuthApi(req, url, segments)
+    const res = await handleLoopClawOAuthApi(req, url, segments)
     expect(res.status).toBe(200)
     const data = (await res.json()) as { authorizeUrl: string; state: string }
     expect(data.authorizeUrl).toContain('code_challenge_method=S256')
@@ -62,7 +62,7 @@ describe('POST /api/loopclaw-oauth/start', () => {
 
   test('400 if serverPort missing', async () => {
     const { req, url, segments } = buildReq('POST', '/api/loopclaw-oauth/start', {})
-    const res = await handleHahaOAuthApi(req, url, segments)
+    const res = await handleLoopClawOAuthApi(req, url, segments)
     expect(res.status).toBe(400)
     const body = (await res.json()) as { error: string; message?: string }
     expect(body.error).toBe('BAD_REQUEST')
@@ -75,7 +75,7 @@ describe('GET /api/loopclaw-oauth/status', () => {
 
   test('returns loggedIn=false when no token file', async () => {
     const { req, url, segments } = buildReq('GET', '/api/loopclaw-oauth/status')
-    const res = await handleHahaOAuthApi(req, url, segments)
+    const res = await handleLoopClawOAuthApi(req, url, segments)
     expect(res.status).toBe(200)
     const data = (await res.json()) as { loggedIn: boolean }
     expect(data.loggedIn).toBe(false)
@@ -91,7 +91,7 @@ describe('GET /api/loopclaw-oauth/status', () => {
     })
 
     const { req, url, segments } = buildReq('GET', '/api/loopclaw-oauth/status')
-    const res = await handleHahaOAuthApi(req, url, segments)
+    const res = await handleLoopClawOAuthApi(req, url, segments)
     expect(res.status).toBe(200)
     const data = (await res.json()) as {
       loggedIn: boolean
@@ -118,7 +118,7 @@ describe('GET /api/loopclaw-oauth/status', () => {
     })
 
     const { req, url, segments } = buildReq('GET', '/api/loopclaw-oauth/status')
-    const res = await handleHahaOAuthApi(req, url, segments)
+    const res = await handleLoopClawOAuthApi(req, url, segments)
 
     expect(res.status).toBe(200)
     expect(await res.json()).toEqual({ loggedIn: false })
@@ -139,7 +139,7 @@ describe('DELETE /api/loopclaw-oauth', () => {
     })
 
     const { req, url, segments } = buildReq('DELETE', '/api/loopclaw-oauth')
-    const res = await handleHahaOAuthApi(req, url, segments)
+    const res = await handleLoopClawOAuthApi(req, url, segments)
     expect(res.status).toBe(200)
     expect(await loopClawOAuthService.loadTokens()).toBeNull()
   })

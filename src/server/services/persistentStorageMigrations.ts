@@ -318,10 +318,10 @@ function buildManagedSettingsForMigratedProvider(provider: JsonObject | undefine
 
 async function migrateLegacyRootProviders(
   configDir: string,
-  ccHahaDir: string,
+  loopClawDir: string,
   report: MigrationReport,
 ): Promise<void> {
-  const targetPath = path.join(ccHahaDir, 'providers.json')
+  const targetPath = path.join(loopClawDir, 'providers.json')
   try {
     await fs.access(targetPath)
     return
@@ -344,7 +344,7 @@ async function migrateLegacyRootProviders(
     await writeJsonFile(targetPath, migrated)
     report.migratedEntries.push('providers.json -> simple-loop-claw/providers.json')
 
-    const settingsPath = path.join(ccHahaDir, 'settings.json')
+    const settingsPath = path.join(loopClawDir, 'settings.json')
     const settings = await readJsonFile(settingsPath).catch(() => ({ missing: false, value: undefined, raw: '' }))
     if (!settings.missing) return
 
@@ -370,18 +370,18 @@ async function migrateLegacyRootProviders(
 
 async function runPersistentStorageMigrations(configDir: string): Promise<MigrationReport> {
   const report: MigrationReport = { migratedEntries: [], failures: [] }
-  const ccHahaDir = path.join(configDir, 'simple-loop-claw')
+  const loopClawDir = path.join(configDir, 'simple-loop-claw')
 
-  await migrateLegacyRootProviders(configDir, ccHahaDir, report)
+  await migrateLegacyRootProviders(configDir, loopClawDir, report)
 
   await migrateJsonEntry(
-    path.join(ccHahaDir, 'providers.json'),
+    path.join(loopClawDir, 'providers.json'),
     'simple-loop-claw/providers.json',
     report,
     migrateProvidersIndex,
   )
   await migrateJsonEntry(
-    path.join(ccHahaDir, 'settings.json'),
+    path.join(loopClawDir, 'settings.json'),
     'simple-loop-claw/settings.json',
     report,
     migrateManagedSettings,

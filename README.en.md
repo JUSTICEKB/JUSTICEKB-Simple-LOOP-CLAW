@@ -25,8 +25,8 @@
 
 **Simple LoopClaw** is a local **AI Agent collaboration and workflow orchestration workbench** designed for individual developers to lower the barrier of entry for AI-assisted programming.
 
-By unifying and refactoring the best open-source practices from the community (`cc-haha` and `Qclaw`), we implemented several core enhancements:
-1. **Engine Upgrade (from `cc-haha`)**: Inherits the full-featured local execution CLI engine, custom MCP tool integrations, and a beautiful Electron + React desktop IDE workspace companion.
+By unifying and refactoring the best open-source practices from the community (`simple-loop-claw` and `Qclaw`), we implemented several core enhancements:
+1. **Engine Upgrade (from `simple-loop-claw`)**: Inherits the full-featured local execution CLI engine, custom MCP tool integrations, and a beautiful Electron + React desktop IDE workspace companion.
 2. **Simplified Spirit (from `Qclaw`)**:
    - Streamlined environment checks to minimize onboarding friction for beginners.
    - Designed a **Windows-friendly native launcher** (`bin/loop-claw.cmd`) so Windows developers do not need complex WSL or Bash configuration to run CLI agent loops.

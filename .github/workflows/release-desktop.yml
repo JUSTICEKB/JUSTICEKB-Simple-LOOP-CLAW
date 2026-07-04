@@ -395,47 +395,47 @@ jobs:
           case "${{ matrix.label }}" in
             macOS-ARM64)
               expected=(
-                "Claude-Code-Haha-${APP_VERSION}-mac-arm64.dmg"
-                "Claude-Code-Haha-${APP_VERSION}-mac-arm64.dmg.blockmap"
-                "Claude-Code-Haha-${APP_VERSION}-mac-arm64.zip"
-                "Claude-Code-Haha-${APP_VERSION}-mac-arm64.zip.blockmap"
+                "Claude-Code-LoopClaw-${APP_VERSION}-mac-arm64.dmg"
+                "Claude-Code-LoopClaw-${APP_VERSION}-mac-arm64.dmg.blockmap"
+                "Claude-Code-LoopClaw-${APP_VERSION}-mac-arm64.zip"
+                "Claude-Code-LoopClaw-${APP_VERSION}-mac-arm64.zip.blockmap"
                 "latest-mac.yml"
               )
               ;;
             macOS-x64)
               expected=(
-                "Claude-Code-Haha-${APP_VERSION}-mac-x64.dmg"
-                "Claude-Code-Haha-${APP_VERSION}-mac-x64.dmg.blockmap"
-                "Claude-Code-Haha-${APP_VERSION}-mac-x64.zip"
-                "Claude-Code-Haha-${APP_VERSION}-mac-x64.zip.blockmap"
+                "Claude-Code-LoopClaw-${APP_VERSION}-mac-x64.dmg"
+                "Claude-Code-LoopClaw-${APP_VERSION}-mac-x64.dmg.blockmap"
+                "Claude-Code-LoopClaw-${APP_VERSION}-mac-x64.zip"
+                "Claude-Code-LoopClaw-${APP_VERSION}-mac-x64.zip.blockmap"
                 "latest-mac.yml"
               )
               ;;
             Linux-x64)
               expected=(
-                "Claude-Code-Haha-${APP_VERSION}-linux-x86_64.AppImage"
-                "Claude-Code-Haha-${APP_VERSION}-linux-amd64.deb"
+                "Claude-Code-LoopClaw-${APP_VERSION}-linux-x86_64.AppImage"
+                "Claude-Code-LoopClaw-${APP_VERSION}-linux-amd64.deb"
                 "latest-linux.yml"
               )
               ;;
             Linux-ARM64)
               expected=(
-                "Claude-Code-Haha-${APP_VERSION}-linux-arm64.AppImage"
-                "Claude-Code-Haha-${APP_VERSION}-linux-arm64.deb"
+                "Claude-Code-LoopClaw-${APP_VERSION}-linux-arm64.AppImage"
+                "Claude-Code-LoopClaw-${APP_VERSION}-linux-arm64.deb"
                 "latest-linux-arm64.yml"
               )
               ;;
             Windows-x64)
               expected=(
-                "Claude-Code-Haha-${APP_VERSION}-win-x64.exe"
-                "Claude-Code-Haha-${APP_VERSION}-win-x64.exe.blockmap"
+                "Claude-Code-LoopClaw-${APP_VERSION}-win-x64.exe"
+                "Claude-Code-LoopClaw-${APP_VERSION}-win-x64.exe.blockmap"
                 "latest.yml"
               )
               ;;
             Windows-ARM64)
               expected=(
-                "Claude-Code-Haha-${APP_VERSION}-win-arm64.exe"
-                "Claude-Code-Haha-${APP_VERSION}-win-arm64.exe.blockmap"
+                "Claude-Code-LoopClaw-${APP_VERSION}-win-arm64.exe"
+                "Claude-Code-LoopClaw-${APP_VERSION}-win-arm64.exe.blockmap"
                 "latest.yml"
               )
               ;;
@@ -546,22 +546,22 @@ jobs:
           APP_VERSION: ${{ steps.version.outputs.value }}
         run: |
           expected=(
-            "Claude-Code-Haha-${APP_VERSION}-mac-arm64.dmg"
-            "Claude-Code-Haha-${APP_VERSION}-mac-arm64.dmg.blockmap"
-            "Claude-Code-Haha-${APP_VERSION}-mac-arm64.zip"
-            "Claude-Code-Haha-${APP_VERSION}-mac-arm64.zip.blockmap"
-            "Claude-Code-Haha-${APP_VERSION}-mac-x64.dmg"
-            "Claude-Code-Haha-${APP_VERSION}-mac-x64.dmg.blockmap"
-            "Claude-Code-Haha-${APP_VERSION}-mac-x64.zip"
-            "Claude-Code-Haha-${APP_VERSION}-mac-x64.zip.blockmap"
-            "Claude-Code-Haha-${APP_VERSION}-linux-x86_64.AppImage"
-            "Claude-Code-Haha-${APP_VERSION}-linux-amd64.deb"
-            "Claude-Code-Haha-${APP_VERSION}-linux-arm64.AppImage"
-            "Claude-Code-Haha-${APP_VERSION}-linux-arm64.deb"
-            "Claude-Code-Haha-${APP_VERSION}-win-x64.exe"
-            "Claude-Code-Haha-${APP_VERSION}-win-x64.exe.blockmap"
-            "Claude-Code-Haha-${APP_VERSION}-win-arm64.exe"
-            "Claude-Code-Haha-${APP_VERSION}-win-arm64.exe.blockmap"
+            "Claude-Code-LoopClaw-${APP_VERSION}-mac-arm64.dmg"
+            "Claude-Code-LoopClaw-${APP_VERSION}-mac-arm64.dmg.blockmap"
+            "Claude-Code-LoopClaw-${APP_VERSION}-mac-arm64.zip"
+            "Claude-Code-LoopClaw-${APP_VERSION}-mac-arm64.zip.blockmap"
+            "Claude-Code-LoopClaw-${APP_VERSION}-mac-x64.dmg"
+            "Claude-Code-LoopClaw-${APP_VERSION}-mac-x64.dmg.blockmap"
+            "Claude-Code-LoopClaw-${APP_VERSION}-mac-x64.zip"
+            "Claude-Code-LoopClaw-${APP_VERSION}-mac-x64.zip.blockmap"
+            "Claude-Code-LoopClaw-${APP_VERSION}-linux-x86_64.AppImage"
+            "Claude-Code-LoopClaw-${APP_VERSION}-linux-amd64.deb"
+            "Claude-Code-LoopClaw-${APP_VERSION}-linux-arm64.AppImage"
+            "Claude-Code-LoopClaw-${APP_VERSION}-linux-arm64.deb"
+            "Claude-Code-LoopClaw-${APP_VERSION}-win-x64.exe"
+            "Claude-Code-LoopClaw-${APP_VERSION}-win-x64.exe.blockmap"
+            "Claude-Code-LoopClaw-${APP_VERSION}-win-arm64.exe"
+            "Claude-Code-LoopClaw-${APP_VERSION}-win-arm64.exe.blockmap"
           )
 
           missing=()

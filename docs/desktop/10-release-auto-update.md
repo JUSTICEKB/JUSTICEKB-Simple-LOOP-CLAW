@@ -43,7 +43,7 @@ WINDOWS_CERTIFICATE_PASSWORD
 `v0.4.3` 是从旧 unsigned macOS 发布迁移到 Developer ID 签名/notarization 的第一个版本时，建议不要直接依赖旧版本自动更新：
 
 1. 用 release workflow 产出 signed/notarized `v0.4.3`。
-2. 在一台未安装开发证书的 macOS 机器上手动下载 `Claude-Code-Haha-0.4.3-mac-arm64.dmg`。
+2. 在一台未安装开发证书的 macOS 机器上手动下载 `Claude-Code-LoopClaw-0.4.3-mac-arm64.dmg`。
 3. 不执行 `xattr -d` 或 `xattr -cr`，直接安装并打开。
 4. 确认只出现标准下载来源确认，不出现无法验证开发者、文件损坏或 unidentified developer。
 5. 再把后续 `v0.4.4` 作为自动更新验证目标。

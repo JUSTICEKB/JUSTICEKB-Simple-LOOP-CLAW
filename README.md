@@ -30,8 +30,8 @@
 
 **Simple LoopClaw** 是一个致力于降低 AI 辅助编程门槛、为个人开发者打造的本地 **AI Agent 协同与工作流编排工作台**。
 
-项目结合了社区最优秀的两个开源实践（`cc-haha` 与 `Qclaw`）并进行了系统性的功能升级与架构改造：
-1. **底座升级 (来自 `cc-haha`)**：支持全功能的本地 AI 编程引擎（CLI 交互）、支持自定义 MCP（Model Context Protocol）工具集，并且提供了一个基于 Electron + React 构建的精致桌面 IDE 协同工作台。
+项目结合了社区最优秀的两个开源实践（`simple-loop-claw` 与 `Qclaw`）并进行了系统性的功能升级与架构改造：
+1. **底座升级 (来自 `simple-loop-claw`)**：支持全功能的本地 AI 编程引擎（CLI 交互）、支持自定义 MCP（Model Context Protocol）工具集，并且提供了一个基于 Electron + React 构建的精致桌面 IDE 协同工作台。
 2. **极简精神 (来自 `Qclaw`)**：
    - 彻底优化了环境检测逻辑，大幅降低小白用户的配置成本。
    - 新增了 **Windows 专属快捷启动器** (`bin/loop-claw.cmd`)，让 Windows 开发者免受 WSL 或 Bash 环境的繁琐配置之苦。

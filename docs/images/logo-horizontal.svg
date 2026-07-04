@@ -1,8 +1,8 @@
 <svg width="2200" height="640" viewBox="0 0 2200 640" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect width="2200" height="640" rx="64" fill="#FFFFFF"/>
+  <rect width="2200" height="640" rx="64" fill="#334B89"/>
   <image x="104" y="80" width="480" height="480" href="app-icon.png" preserveAspectRatio="xMidYMid meet"/>
-  <text x="680" y="300" fill="#122033" font-family="SF Pro Display, Avenir Next, Inter, Helvetica Neue, Arial, sans-serif" font-size="168" font-weight="800">Claude Code</text>
-  <text x="680" y="448" fill="#0F8CEB" font-family="SF Pro Display, Avenir Next, Inter, Helvetica Neue, Arial, sans-serif" font-size="132" font-weight="800">Haha</text>
-  <path d="M1040 414H1502" stroke="#FF7A00" stroke-width="16" stroke-linecap="round"/>
-  <path d="M1538 414H1666" stroke="#12C7E8" stroke-width="16" stroke-linecap="round"/>
+  <text x="680" y="290" fill="#FFFFFF" font-family="SF Pro Display, Avenir Next, Inter, Helvetica Neue, Arial, sans-serif" font-size="150" font-weight="800">Simple-LOOP-CLAW</text>
+  <text x="680" y="430" fill="#E7A72C" font-family="SF Pro Display, Avenir Next, Inter, Helvetica Neue, Arial, sans-serif" font-size="108" font-weight="600">AI Coding Agent</text>
+  <path d="M680 476H1600" stroke="#E7A72C" stroke-width="16" stroke-linecap="round"/>
+  <path d="M1640 476H1800" stroke="#D13631" stroke-width="16" stroke-linecap="round"/>
 </svg>

@@ -1,12 +1,12 @@
 // desktop/src/stores/loopClawOAuthStore.ts
 
 import { create } from 'zustand'
-import { loopClawOAuthApi, type HahaOAuthStatus } from '../api/loopClawOAuth'
+import { loopClawOAuthApi, type LoopClawOAuthStatus } from '../api/loopClawOAuth'
 
 const POLL_INTERVAL_MS = 2_000
 
-type HahaOAuthState = {
-  status: HahaOAuthStatus | null
+type LoopClawOAuthState = {
+  status: LoopClawOAuthStatus | null
   isPolling: boolean
   isLoading: boolean
   error: string | null
@@ -18,7 +18,7 @@ type HahaOAuthState = {
   stopPolling: () => void
 }
 
-export const useHahaOAuthStore = create<HahaOAuthState>((set, get) => {
+export const useLoopClawOAuthStore = create<LoopClawOAuthState>((set, get) => {
   let pollTimer: ReturnType<typeof setTimeout> | null = null
 
   return {

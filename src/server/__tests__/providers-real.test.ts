@@ -32,8 +32,8 @@ describe('Real Provider Configs', () => {
     await fs.rm(tmpDir, { recursive: true, force: true })
   })
 
-  // Helper: read the Haha-specific settings file
-  async function readCcHahaSettings(): Promise<Record<string, unknown>> {
+  // Helper: read the LoopClaw-specific settings file
+  async function readLoopClawSettings(): Promise<Record<string, unknown>> {
     const raw = await fs.readFile(path.join(tmpDir, 'simple-loop-claw', 'settings.json'), 'utf-8')
     return JSON.parse(raw)
   }
@@ -64,7 +64,7 @@ describe('Real Provider Configs', () => {
     await service.activateProvider(minimax.id)
 
     // 验证写入 simple-loop-claw/settings.json
-    const settings = await readCcHahaSettings()
+    const settings = await readLoopClawSettings()
     expect((settings.env as Record<string, string>).ANTHROPIC_BASE_URL).toBe('https://api.minimaxi.com/anthropic')
     expect((settings.env as Record<string, string>).ANTHROPIC_AUTH_TOKEN).toBe('sk-fake-test-key-for-testing-only')
     expect((settings.env as Record<string, string>).ANTHROPIC_API_KEY).toBe('')
@@ -105,7 +105,7 @@ describe('Real Provider Configs', () => {
 
     // 先激活 MiniMax
     await service.activateProvider(minimax.id)
-    let settings = await readCcHahaSettings()
+    let settings = await readLoopClawSettings()
     expect((settings.env as Record<string, string>).ANTHROPIC_BASE_URL).toBe('https://api.minimaxi.com/anthropic')
     expect(JSON.parse((settings.env as Record<string, string>).CLAUDE_CODE_MODEL_CONTEXT_WINDOWS)).toMatchObject({
       'MiniMax-M3': 1000000,
@@ -115,7 +115,7 @@ describe('Real Provider Configs', () => {
 
     // 切换到接口AI中转站
     await service.activateProvider(jiekou.id)
-    settings = await readCcHahaSettings()
+    settings = await readLoopClawSettings()
     expect((settings.env as Record<string, string>).ANTHROPIC_BASE_URL).toBe('https://api.jiekou.ai/anthropic')
     expect((settings.env as Record<string, string>).ANTHROPIC_AUTH_TOKEN).toBe('sk-fake-test-key-for-testing-only')
     expect((settings.env as Record<string, string>).ANTHROPIC_API_KEY).toBe('')
@@ -160,7 +160,7 @@ describe('Real Provider Configs', () => {
     })
     await service.activateProvider(provider.id)
 
-    const settings = await readCcHahaSettings()
+    const settings = await readLoopClawSettings()
 
     // 验证新字段写入
     expect((settings.env as Record<string, string>).ANTHROPIC_BASE_URL).toBe('https://api.jiekou.ai/anthropic')
@@ -186,13 +186,13 @@ describe('Real Provider Configs', () => {
     await service.activateProvider(provider.id)
 
     // 确认写入了
-    let settings = await readCcHahaSettings()
+    let settings = await readLoopClawSettings()
     expect((settings.env as Record<string, string>).ANTHROPIC_BASE_URL).toBeDefined()
 
     // 切换到 official
     await service.activateOfficial()
 
-    settings = await readCcHahaSettings()
+    settings = await readLoopClawSettings()
     const env = settings.env as Record<string, string> | undefined
     expect(env?.ANTHROPIC_BASE_URL).toBeUndefined()
     expect(env?.ANTHROPIC_API_KEY).toBeUndefined()
@@ -234,12 +234,12 @@ describe('Real Provider Configs', () => {
       }, null, 2),
     )
 
-    // Haha 添加并激活自己的 provider
+    // LoopClaw 添加并激活自己的 provider
     const provider = await service.addProvider({
       presetId: 'minimax',
       name: 'MiniMax',
       baseUrl: 'https://api.minimaxi.com/anthropic',
-      apiKey: 'sk-haha-key',
+      apiKey: 'sk-loopclaw-key',
       models: MODEL_MAPPING,
     })
     await service.activateProvider(provider.id)
@@ -250,12 +250,12 @@ describe('Real Provider Configs', () => {
     expect((original.env as Record<string, string>).ANTHROPIC_API_KEY).toBe('original-key')
     expect(original.effortLevel).toBe('high')
 
-    // 验证 simple-loop-claw/settings.json 是 Haha 自己的
-    const haha = await readCcHahaSettings()
-    expect((haha.env as Record<string, string>).ANTHROPIC_BASE_URL).toBe('https://api.minimaxi.com/anthropic')
-    expect((haha.env as Record<string, string>).ANTHROPIC_AUTH_TOKEN).toBe('sk-haha-key')
-    expect((haha.env as Record<string, string>).ANTHROPIC_API_KEY).toBe('')
+    // 验证 simple-loop-claw/settings.json 是 LoopClaw 自己的
+    const loopclaw = await readLoopClawSettings()
+    expect((loopclaw.env as Record<string, string>).ANTHROPIC_BASE_URL).toBe('https://api.minimaxi.com/anthropic')
+    expect((loopclaw.env as Record<string, string>).ANTHROPIC_AUTH_TOKEN).toBe('sk-loopclaw-key')
+    expect((loopclaw.env as Record<string, string>).ANTHROPIC_API_KEY).toBe('')
 
-    console.log('✅ 原版 settings.json 完好无损，Haha 配置独立存储')
+    console.log('✅ 原版 settings.json 完好无损，LoopClaw 配置独立存储')
   })
 })

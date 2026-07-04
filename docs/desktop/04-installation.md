@@ -8,11 +8,11 @@
 
 | 平台 | 文件 |
 |------|------|
-| macOS (Apple Silicon / M 系列) | `Claude-Code-Haha-<版本>-mac-arm64.dmg` |
-| macOS (Intel) | `Claude-Code-Haha-<版本>-mac-x64.dmg` |
-| Windows (x64) | `Claude-Code-Haha-<版本>-win-x64.exe` |
-| Linux (x64) | `Claude-Code-Haha-<版本>-linux-x86_64.AppImage` 或 `...-linux-amd64.deb` |
-| Linux (ARM64) | `Claude-Code-Haha-<版本>-linux-arm64.AppImage` 或 `...-linux-arm64.deb` |
+| macOS (Apple Silicon / M 系列) | `Claude-Code-LoopClaw-<版本>-mac-arm64.dmg` |
+| macOS (Intel) | `Claude-Code-LoopClaw-<版本>-mac-x64.dmg` |
+| Windows (x64) | `Claude-Code-LoopClaw-<版本>-win-x64.exe` |
+| Linux (x64) | `Claude-Code-LoopClaw-<版本>-linux-x86_64.AppImage` 或 `...-linux-amd64.deb` |
+| Linux (ARM64) | `Claude-Code-LoopClaw-<版本>-linux-arm64.AppImage` 或 `...-linux-arm64.deb` |
 
 > 不确定 Mac 架构？点击左上角  → 关于本机，芯片为「Apple M…」选 arm64，「Intel」选 x64。
 
@@ -23,7 +23,7 @@
 如果安装的是旧版或 unsigned 临时包，首次打开可能提示**"已损坏"**或**"无法验证开发者"**，再在终端执行：
 
 ```bash
-xattr -cr /Applications/Claude\ Code\ Haha.app
+xattr -cr /Applications/Claude\ Code\ LoopClaw.app
 ```
 
 也可以在「系统设置 → 隐私与安全性」里点"仍要打开"。
@@ -37,8 +37,8 @@ xattr -cr /Applications/Claude\ Code\ Haha.app
 AppImage：
 
 ```bash
-chmod +x Claude-Code-Haha-<版本>-linux-x86_64.AppImage
-./Claude-Code-Haha-<版本>-linux-x86_64.AppImage
+chmod +x Claude-Code-LoopClaw-<版本>-linux-x86_64.AppImage
+./Claude-Code-LoopClaw-<版本>-linux-x86_64.AppImage
 ```
 
 > 提示缺少 FUSE：Ubuntu 22.04 及更早 `sudo apt install libfuse2`，24.04+ `sudo apt install libfuse2t64`。
@@ -46,7 +46,7 @@ chmod +x Claude-Code-Haha-<版本>-linux-x86_64.AppImage
 deb：
 
 ```bash
-sudo apt install ./Claude-Code-Haha-<版本>-linux-amd64.deb
+sudo apt install ./Claude-Code-LoopClaw-<版本>-linux-amd64.deb
 ```
 
 ## Web UI 模式

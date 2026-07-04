@@ -14,9 +14,9 @@ vi.mock('../api/loopClawOAuth', () => ({
   },
 }))
 
-import { useHahaOAuthStore } from './loopClawOAuthStore'
+import { useLoopClawOAuthStore } from './loopClawOAuthStore'
 
-const initialState = useHahaOAuthStore.getState()
+const initialState = useLoopClawOAuthStore.getState()
 
 describe('loopClawOAuthStore', () => {
   beforeEach(() => {
@@ -24,7 +24,7 @@ describe('loopClawOAuthStore', () => {
     startMock.mockReset()
     statusMock.mockReset()
     logoutMock.mockReset()
-    useHahaOAuthStore.setState({
+    useLoopClawOAuthStore.setState({
       ...initialState,
       status: null,
       isPolling: false,
@@ -34,8 +34,8 @@ describe('loopClawOAuthStore', () => {
   })
 
   afterEach(() => {
-    useHahaOAuthStore.getState().stopPolling()
-    useHahaOAuthStore.setState(initialState)
+    useLoopClawOAuthStore.getState().stopPolling()
+    useLoopClawOAuthStore.setState(initialState)
     vi.useRealTimers()
   })
 
@@ -45,10 +45,10 @@ describe('loopClawOAuthStore', () => {
       state: 'state-123',
     })
 
-    const result = await useHahaOAuthStore.getState().login()
+    const result = await useLoopClawOAuthStore.getState().login()
 
     expect(result.authorizeUrl).toContain('/api/loopclaw-oauth/callback')
-    expect(useHahaOAuthStore.getState().isPolling).toBe(false)
+    expect(useLoopClawOAuthStore.getState().isPolling).toBe(false)
   })
 
   it('startPolling stops after the status becomes logged in', async () => {
@@ -61,17 +61,17 @@ describe('loopClawOAuthStore', () => {
         subscriptionType: 'max',
       })
 
-    useHahaOAuthStore.getState().startPolling()
-    expect(useHahaOAuthStore.getState().isPolling).toBe(true)
+    useLoopClawOAuthStore.getState().startPolling()
+    expect(useLoopClawOAuthStore.getState().isPolling).toBe(true)
 
     await vi.advanceTimersByTimeAsync(2_000)
-    expect(useHahaOAuthStore.getState().isPolling).toBe(true)
+    expect(useLoopClawOAuthStore.getState().isPolling).toBe(true)
 
     await vi.advanceTimersByTimeAsync(2_000)
-    expect(useHahaOAuthStore.getState().status).toMatchObject({
+    expect(useLoopClawOAuthStore.getState().status).toMatchObject({
       loggedIn: true,
       subscriptionType: 'max',
     })
-    expect(useHahaOAuthStore.getState().isPolling).toBe(false)
+    expect(useLoopClawOAuthStore.getState().isPolling).toBe(false)
   })
 })

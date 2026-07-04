@@ -33,10 +33,10 @@ describe('persistent storage upgrade migrations', () => {
   })
 
   test('migrates legacy providers index and writes a backup before changing it', async () => {
-    const ccHahaDir = path.join(tempDir, 'simple-loop-claw')
-    await fs.mkdir(ccHahaDir, { recursive: true })
+    const loopClawDir = path.join(tempDir, 'simple-loop-claw')
+    await fs.mkdir(loopClawDir, { recursive: true })
     await fs.writeFile(
-      path.join(ccHahaDir, 'providers.json'),
+      path.join(loopClawDir, 'providers.json'),
       JSON.stringify({
         activeProviderId: 'provider-1',
         rootFutureField: { keep: true },
@@ -58,7 +58,7 @@ describe('persistent storage upgrade migrations', () => {
     expect(report.failures).toEqual([])
     expect(report.migratedEntries).toContain('simple-loop-claw/providers.json')
 
-    const migrated = JSON.parse(await fs.readFile(path.join(ccHahaDir, 'providers.json'), 'utf-8')) as {
+    const migrated = JSON.parse(await fs.readFile(path.join(loopClawDir, 'providers.json'), 'utf-8')) as {
       schemaVersion?: number
       activeId?: string | null
       activeProviderId?: string
@@ -73,7 +73,7 @@ describe('persistent storage upgrade migrations', () => {
     expect(migrated.rootFutureField).toEqual({ keep: true })
     expect(migrated.providers?.[0]?.extraFutureField).toBe('keep-me')
 
-    const backups = (await listFiles(ccHahaDir)).filter((file) => file.startsWith('providers.json.bak-before-migration-'))
+    const backups = (await listFiles(loopClawDir)).filter((file) => file.startsWith('providers.json.bak-before-migration-'))
     expect(backups.length).toBe(1)
 
     const service = new ProviderService()
@@ -82,7 +82,7 @@ describe('persistent storage upgrade migrations', () => {
     expect(activeId).toBe('provider-1')
 
     await service.updateProvider('provider-1', { name: 'Renamed Provider' })
-    const rewritten = JSON.parse(await fs.readFile(path.join(ccHahaDir, 'providers.json'), 'utf-8')) as {
+    const rewritten = JSON.parse(await fs.readFile(path.join(loopClawDir, 'providers.json'), 'utf-8')) as {
       rootFutureField?: unknown
       providers?: Array<Record<string, unknown>>
     }
@@ -166,8 +166,8 @@ describe('persistent storage upgrade migrations', () => {
   })
 
   test('does not overwrite current simple-loop-claw provider storage with a legacy root config', async () => {
-    const ccHahaDir = path.join(tempDir, 'simple-loop-claw')
-    await fs.mkdir(ccHahaDir, { recursive: true })
+    const loopClawDir = path.join(tempDir, 'simple-loop-claw')
+    await fs.mkdir(loopClawDir, { recursive: true })
     await fs.writeFile(
       path.join(tempDir, 'providers.json'),
       JSON.stringify({
@@ -185,7 +185,7 @@ describe('persistent storage upgrade migrations', () => {
       'utf-8',
     )
     await fs.writeFile(
-      path.join(ccHahaDir, 'providers.json'),
+      path.join(loopClawDir, 'providers.json'),
       JSON.stringify({
         schemaVersion: CURRENT_PROVIDER_INDEX_SCHEMA_VERSION,
         activeId: null,
@@ -198,7 +198,7 @@ describe('persistent storage upgrade migrations', () => {
 
     expect(report.failures).toEqual([])
     expect(report.migratedEntries).not.toContain('providers.json -> simple-loop-claw/providers.json')
-    const current = JSON.parse(await fs.readFile(path.join(ccHahaDir, 'providers.json'), 'utf-8')) as {
+    const current = JSON.parse(await fs.readFile(path.join(loopClawDir, 'providers.json'), 'utf-8')) as {
       activeId?: string | null
       providerOrder?: string[]
       providers?: unknown[]
@@ -227,24 +227,24 @@ describe('persistent storage upgrade migrations', () => {
   })
 
   test('quarantines malformed managed settings instead of blocking startup', async () => {
-    const ccHahaDir = path.join(tempDir, 'simple-loop-claw')
-    await fs.mkdir(ccHahaDir, { recursive: true })
-    await fs.writeFile(path.join(ccHahaDir, 'settings.json'), '{"env":', 'utf-8')
+    const loopClawDir = path.join(tempDir, 'simple-loop-claw')
+    await fs.mkdir(loopClawDir, { recursive: true })
+    await fs.writeFile(path.join(loopClawDir, 'settings.json'), '{"env":', 'utf-8')
 
     const report = await ensurePersistentStorageUpgraded()
 
     expect(report.failures).toEqual([])
     expect(report.migratedEntries).toContain('simple-loop-claw/settings.json')
-    expect(JSON.parse(await fs.readFile(path.join(ccHahaDir, 'settings.json'), 'utf-8'))).toEqual({})
-    const quarantined = (await listFiles(ccHahaDir)).filter((file) => file.startsWith('settings.json.invalid-'))
+    expect(JSON.parse(await fs.readFile(path.join(loopClawDir, 'settings.json'), 'utf-8'))).toEqual({})
+    const quarantined = (await listFiles(loopClawDir)).filter((file) => file.startsWith('settings.json.invalid-'))
     expect(quarantined.length).toBe(1)
   })
 
   test('upgrades existing DeepSeek managed env to follow global thinking settings', async () => {
-    const ccHahaDir = path.join(tempDir, 'simple-loop-claw')
-    await fs.mkdir(ccHahaDir, { recursive: true })
+    const loopClawDir = path.join(tempDir, 'simple-loop-claw')
+    await fs.mkdir(loopClawDir, { recursive: true })
     await fs.writeFile(
-      path.join(ccHahaDir, 'settings.json'),
+      path.join(loopClawDir, 'settings.json'),
       JSON.stringify({
         env: {
           ANTHROPIC_BASE_URL: 'https://api.deepseek.com/anthropic',
@@ -265,7 +265,7 @@ describe('persistent storage upgrade migrations', () => {
     expect(report.failures).toEqual([])
     expect(report.migratedEntries).toContain('simple-loop-claw/settings.json')
 
-    const migrated = JSON.parse(await fs.readFile(path.join(ccHahaDir, 'settings.json'), 'utf-8')) as {
+    const migrated = JSON.parse(await fs.readFile(path.join(loopClawDir, 'settings.json'), 'utf-8')) as {
       env?: Record<string, string>
     }
     expect(migrated.env?.LOOP_CLAW_SEND_DISABLED_THINKING).toBeUndefined()
@@ -280,7 +280,7 @@ describe('persistent storage upgrade migrations', () => {
     )
     expect(migrated.env?.USER_CUSTOM_ENV).toBe('keep-me')
 
-    const backups = (await listFiles(ccHahaDir)).filter((file) => file.startsWith('settings.json.bak-before-migration-'))
+    const backups = (await listFiles(loopClawDir)).filter((file) => file.startsWith('settings.json.bak-before-migration-'))
     expect(backups.length).toBe(1)
   })
 })

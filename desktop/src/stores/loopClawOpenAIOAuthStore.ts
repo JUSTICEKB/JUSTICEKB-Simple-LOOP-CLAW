@@ -3,13 +3,13 @@
 import { create } from 'zustand'
 import {
   loopClawOpenAIOAuthApi,
-  type HahaOpenAIOAuthStatus,
+  type LoopClawOpenAIOAuthStatus,
 } from '../api/loopClawOpenAIOAuth'
 
 const POLL_INTERVAL_MS = 2_000
 
-type HahaOpenAIOAuthState = {
-  status: HahaOpenAIOAuthStatus | null
+type LoopClawOpenAIOAuthState = {
+  status: LoopClawOpenAIOAuthStatus | null
   isPolling: boolean
   isLoading: boolean
   error: string | null
@@ -21,7 +21,7 @@ type HahaOpenAIOAuthState = {
   stopPolling: () => void
 }
 
-export const useHahaOpenAIOAuthStore = create<HahaOpenAIOAuthState>((set, get) => {
+export const useLoopClawOpenAIOAuthStore = create<LoopClawOpenAIOAuthState>((set, get) => {
   let pollTimer: ReturnType<typeof setTimeout> | null = null
 
   return {

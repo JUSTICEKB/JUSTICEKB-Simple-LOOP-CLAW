@@ -33,11 +33,11 @@ vi.mock('../chat/clipboard', () => ({
 }))
 
 import { ChatGPTOfficialLogin } from './ChatGPTOfficialLogin'
-import { useHahaOpenAIOAuthStore } from '../../stores/loopClawOpenAIOAuthStore'
+import { useLoopClawOpenAIOAuthStore } from '../../stores/loopClawOpenAIOAuthStore'
 import { useSettingsStore } from '../../stores/settingsStore'
 import { browserHost } from '../../lib/desktopHost/browserHost'
 
-const initialOAuthState = useHahaOpenAIOAuthStore.getState()
+const initialOAuthState = useLoopClawOpenAIOAuthStore.getState()
 
 describe('ChatGPTOfficialLogin', () => {
   beforeEach(() => {
@@ -49,7 +49,7 @@ describe('ChatGPTOfficialLogin', () => {
     copyTextToClipboardMock.mockReset()
     Reflect.deleteProperty(window, 'desktopHost')
     useSettingsStore.setState({ locale: 'en' })
-    useHahaOpenAIOAuthStore.setState({
+    useLoopClawOpenAIOAuthStore.setState({
       ...initialOAuthState,
       status: null,
       isPolling: false,
@@ -60,8 +60,8 @@ describe('ChatGPTOfficialLogin', () => {
 
   afterEach(() => {
     act(() => {
-      useHahaOpenAIOAuthStore.getState().stopPolling()
-      useHahaOpenAIOAuthStore.setState(initialOAuthState)
+      useLoopClawOpenAIOAuthStore.getState().stopPolling()
+      useLoopClawOpenAIOAuthStore.setState(initialOAuthState)
     })
     vi.useRealTimers()
     cleanup()
@@ -106,8 +106,8 @@ describe('ChatGPTOfficialLogin', () => {
     })
 
     expect(copyTextToClipboardMock).toHaveBeenCalledWith(authorizeUrl)
-    expect(useHahaOpenAIOAuthStore.getState().error).toBeNull()
-    expect(useHahaOpenAIOAuthStore.getState().isPolling).toBe(true)
+    expect(useLoopClawOpenAIOAuthStore.getState().error).toBeNull()
+    expect(useLoopClawOpenAIOAuthStore.getState().isPolling).toBe(true)
     expect(screen.queryByText(/Unable to open browser/)).not.toBeInTheDocument()
     expect(screen.queryByRole('button', { name: 'Copy authorization link' })).not.toBeInTheDocument()
   })
@@ -145,7 +145,7 @@ describe('ChatGPTOfficialLogin', () => {
     })
 
     expect(copyTextToClipboardMock).toHaveBeenCalledWith(authorizeUrl)
-    expect(useHahaOpenAIOAuthStore.getState().isPolling).toBe(false)
+    expect(useLoopClawOpenAIOAuthStore.getState().isPolling).toBe(false)
     expect(screen.getByText(/Unable to copy authorization link/)).toBeInTheDocument()
     expect(screen.getByRole('button', { name: 'Copy authorization link' })).toBeInTheDocument()
   })

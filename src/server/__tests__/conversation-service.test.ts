@@ -239,7 +239,7 @@ describe('ConversationService', () => {
 
   test('buildChildEnv pins desktop memory to the current sanitized project directory', async () => {
     const service = new ConversationService() as any
-    const workDir = path.join(tmpDir, 'workspace', 'myself_code', 'claude-code-haha')
+    const workDir = path.join(tmpDir, 'workspace', 'myself_code', 'simple-loop-claw')
     await fs.mkdir(workDir, { recursive: true })
 
     const env = (await service.buildChildEnv(workDir)) as Record<string, string>
@@ -283,10 +283,10 @@ describe('ConversationService', () => {
   })
 
   test('strips inherited provider env when desktop provider config exists', async () => {
-    const ccHahaDir = path.join(tmpDir, 'simple-loop-claw')
-    await fs.mkdir(ccHahaDir, { recursive: true })
+    const loopClawDir = path.join(tmpDir, 'simple-loop-claw')
+    await fs.mkdir(loopClawDir, { recursive: true })
     await fs.writeFile(
-      path.join(ccHahaDir, 'providers.json'),
+      path.join(loopClawDir, 'providers.json'),
       JSON.stringify({ activeId: null, providers: [] }),
       'utf-8',
     )
@@ -362,19 +362,19 @@ describe('ConversationService', () => {
     }
   })
 
-  test('buildChildEnv injects CLAUDE_CODE_OAUTH_TOKEN when official mode + haha oauth token exists', async () => {
-    const ccHahaDir = path.join(tmpDir, 'simple-loop-claw')
-    await fs.mkdir(ccHahaDir, { recursive: true })
+  test('buildChildEnv injects CLAUDE_CODE_OAUTH_TOKEN when official mode + loopclaw oauth token exists', async () => {
+    const loopClawDir = path.join(tmpDir, 'simple-loop-claw')
+    await fs.mkdir(loopClawDir, { recursive: true })
     await fs.writeFile(
-      path.join(ccHahaDir, 'settings.json'),
+      path.join(loopClawDir, 'settings.json'),
       JSON.stringify({ env: {} }),
       'utf-8',
     )
 
     const { loopClawOAuthService } = await import('../services/loopClawOAuthService.js')
     await loopClawOAuthService.saveTokens({
-      accessToken: 'haha-fresh-token',
-      refreshToken: 'haha-refresh-xxx',
+      accessToken: 'loopclaw-fresh-token',
+      refreshToken: 'loopclaw-refresh-xxx',
       expiresAt: Date.now() + 30 * 60_000,
       scopes: ['user:inference'],
       subscriptionType: 'max',
@@ -384,7 +384,7 @@ describe('ConversationService', () => {
     const env = (await service.buildChildEnv('/tmp')) as Record<string, string>
 
     expect(env.CLAUDE_CODE_ENTRYPOINT).toBe('claude-desktop')
-    expect(env.CLAUDE_CODE_OAUTH_TOKEN).toBe('haha-fresh-token')
+    expect(env.CLAUDE_CODE_OAUTH_TOKEN).toBe('loopclaw-fresh-token')
   })
 
   test('sendMessage updates a running official OAuth CLI token before the user turn', async () => {
@@ -433,17 +433,17 @@ describe('ConversationService', () => {
   })
 
   test('buildChildEnv does NOT inject CLAUDE_CODE_OAUTH_TOKEN when not official mode', async () => {
-    const ccHahaDir = path.join(tmpDir, 'simple-loop-claw')
-    await fs.mkdir(ccHahaDir, { recursive: true })
+    const loopClawDir = path.join(tmpDir, 'simple-loop-claw')
+    await fs.mkdir(loopClawDir, { recursive: true })
     await fs.writeFile(
-      path.join(ccHahaDir, 'settings.json'),
+      path.join(loopClawDir, 'settings.json'),
       JSON.stringify({ env: { ANTHROPIC_AUTH_TOKEN: 'custom-provider-token' } }),
       'utf-8',
     )
 
     const { loopClawOAuthService } = await import('../services/loopClawOAuthService.js')
     await loopClawOAuthService.saveTokens({
-      accessToken: 'haha-token-should-not-be-used',
+      accessToken: 'loopclaw-token-should-not-be-used',
       refreshToken: null,
       expiresAt: null,
       scopes: [],
@@ -679,10 +679,10 @@ describe('ConversationService', () => {
   })
 
   test('buildChildEnv can force official auth even when a custom default provider exists', async () => {
-    const ccHahaDir = path.join(tmpDir, 'simple-loop-claw')
-    await fs.mkdir(ccHahaDir, { recursive: true })
+    const loopClawDir = path.join(tmpDir, 'simple-loop-claw')
+    await fs.mkdir(loopClawDir, { recursive: true })
     await fs.writeFile(
-      path.join(ccHahaDir, 'settings.json'),
+      path.join(loopClawDir, 'settings.json'),
       JSON.stringify({ env: { ANTHROPIC_AUTH_TOKEN: 'custom-provider-token' } }),
       'utf-8',
     )
@@ -750,10 +750,10 @@ describe('ConversationService', () => {
   })
 
   test('buildChildEnv does not leak inherited CLAUDE_CODE_OAUTH_TOKEN when official token is unavailable', async () => {
-    const ccHahaDir = path.join(tmpDir, 'simple-loop-claw')
-    await fs.mkdir(ccHahaDir, { recursive: true })
+    const loopClawDir = path.join(tmpDir, 'simple-loop-claw')
+    await fs.mkdir(loopClawDir, { recursive: true })
     await fs.writeFile(
-      path.join(ccHahaDir, 'settings.json'),
+      path.join(loopClawDir, 'settings.json'),
       JSON.stringify({ env: {} }),
       'utf-8',
     )
@@ -773,7 +773,7 @@ describe('ConversationService', () => {
     )) as Record<string, string>
 
     expect(env.LOOP_CLAW_COMPUTER_USE_HOST_BUNDLE_ID).toBe(
-      'com.claude-code-haha.desktop',
+      'com.simple-loop-claw.desktop',
     )
     expect(env.LOOP_CLAW_DESKTOP_SERVER_URL).toBe('http://127.0.0.1:3456')
     expect(env.LOOP_CLAW_TRACE_API_CALLS).toBe('1')

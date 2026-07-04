@@ -1160,7 +1160,7 @@ export class ConversationService {
       CALLER_DIR: workDir,
       PWD: workDir,
       ...(sdkUrl
-        ? { LOOP_CLAW_COMPUTER_USE_HOST_BUNDLE_ID: 'com.claude-code-haha.desktop' }
+        ? { LOOP_CLAW_COMPUTER_USE_HOST_BUNDLE_ID: 'com.simple-loop-claw.desktop' }
         : {}),
       ...(sdkUrl && traceCaptureEnabled
         ? { LOOP_CLAW_TRACE_API_CALLS: '1' }
@@ -1219,7 +1219,7 @@ export class ConversationService {
   /**
    * 官方模式下构造 CLI 子进程的 auth env:
    * - CLAUDE_CODE_ENTRYPOINT=claude-desktop 让 CLI 忽略外部残留 ANTHROPIC_* env
-   * - 如果 haha 自管的 oauth.json 里有可用 token,注入 CLAUDE_CODE_OAUTH_TOKEN
+   * - 如果 loopclaw 自管的 oauth.json 里有可用 token,注入 CLAUDE_CODE_OAUTH_TOKEN
    *   让 CLI 直接拿 env 里的 token,不碰 Keychain,绕开 macOS ACL 静默拒绝
    *   (这是 DMG 安装 .app 后 403 "Request not allowed" 的唯一根治方案)
    */
@@ -1278,9 +1278,9 @@ export class ConversationService {
 
     const configDir =
       process.env.CLAUDE_CONFIG_DIR || path.join(os.homedir(), '.claude')
-    const ccHahaDir = path.join(configDir, 'simple-loop-claw')
-    const providersIndexPath = path.join(ccHahaDir, 'providers.json')
-    const settingsPath = path.join(ccHahaDir, 'settings.json')
+    const loopClawDir = path.join(configDir, 'simple-loop-claw')
+    const providersIndexPath = path.join(loopClawDir, 'providers.json')
+    const settingsPath = path.join(loopClawDir, 'settings.json')
 
     if (fs.existsSync(providersIndexPath)) {
       return true

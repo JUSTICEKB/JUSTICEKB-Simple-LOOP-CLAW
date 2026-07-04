@@ -9,10 +9,10 @@
 
 ```bash
 # 方式一：添加 PATH（推荐）
-export PATH="$HOME/path/to/claude-code-haha/bin:$PATH"
+export PATH="$HOME/path/to/simple-loop-claw/bin:$PATH"
 
 # 方式二：alias
-alias loop-claw="$HOME/path/to/claude-code-haha/bin/loop-claw"
+alias loop-claw="$HOME/path/to/simple-loop-claw/bin/loop-claw"
 ```
 
 然后重新加载配置：
@@ -26,7 +26,7 @@ source ~/.bashrc  # 或 source ~/.zshrc
 在 `~/.bashrc` 中添加：
 
 ```bash
-export PATH="$HOME/path/to/claude-code-haha/bin:$PATH"
+export PATH="$HOME/path/to/simple-loop-claw/bin:$PATH"
 ```
 
 ### Windows + WSL 工具链

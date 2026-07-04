@@ -99,12 +99,12 @@ function filterSettingsEnv(
 }
 
 /**
- * Read env vars from ~/.claude/simple-loop-claw/settings.json (Haha-specific provider
+ * Read env vars from ~/.claude/simple-loop-claw/settings.json (LoopClaw-specific provider
  * config). This file is written by ProviderService.syncToSettings() and
  * contains ANTHROPIC_BASE_URL, ANTHROPIC_AUTH_TOKEN, model defaults, etc.
  * Returns an empty object if the file doesn't exist or is invalid.
  */
-function getCcHahaSettingsEnv(): Record<string, string> {
+function getLoopClawSettingsEnv(): Record<string, string> {
   const configDir = getClaudeConfigHomeDir()
   const serverPort =
     !isEnvTruthy(process.env.CLAUDE_CODE_PROVIDER_MANAGED_BY_HOST) &&
@@ -112,8 +112,8 @@ function getCcHahaSettingsEnv(): Record<string, string> {
       ? ensureStandaloneProviderProxy()
       : undefined
   try {
-    const ccHahaSettings = join(configDir, 'simple-loop-claw', 'settings.json')
-    const raw = readFileSync(ccHahaSettings, 'utf-8')
+    const loopClawSettings = join(configDir, 'simple-loop-claw', 'settings.json')
+    const raw = readFileSync(loopClawSettings, 'utf-8')
     const parsed = JSON.parse(raw) as { env?: Record<string, string> }
     const settingsEnv = normalizeLegacyDeepSeekManagedEnv(parsed.env ?? {}).env
     return mergeActiveProviderManagedEnv(settingsEnv, configDir, { serverPort })
@@ -181,10 +181,10 @@ export function applySafeConfigEnvironmentVariables(): void {
   }
 
   // simple-loop-claw provider isolation: apply env from ~/.claude/simple-loop-claw/settings.json
-  // AFTER userSettings so Haha-specific provider config takes priority over
-  // the original Claude Code's settings. This prevents Haha from polluting
+  // AFTER userSettings so LoopClaw-specific provider config takes priority over
+  // the original Claude Code's settings. This prevents LoopClaw from polluting
   // ~/.claude/settings.json while still allowing it to override provider vars.
-  Object.assign(process.env, filterSettingsEnv(getCcHahaSettingsEnv()))
+  Object.assign(process.env, filterSettingsEnv(getLoopClawSettingsEnv()))
 
   // Compute remote-managed-settings eligibility now, with userSettings and
   // flagSettings env applied. Eligibility reads CLAUDE_CODE_USE_BEDROCK,
@@ -228,8 +228,8 @@ export function applyConfigEnvironmentVariables(): void {
   Object.assign(process.env, filterSettingsEnv(getSettings_DEPRECATED()?.env))
 
   // simple-loop-claw provider isolation: same as in applySafeConfigEnvironmentVariables,
-  // apply Haha-specific env last so it overrides the original settings.
-  Object.assign(process.env, filterSettingsEnv(getCcHahaSettingsEnv()))
+  // apply LoopClaw-specific env last so it overrides the original settings.
+  Object.assign(process.env, filterSettingsEnv(getLoopClawSettingsEnv()))
 
   // Clear caches so agents are rebuilt with the new env vars
   clearCACertsCache()

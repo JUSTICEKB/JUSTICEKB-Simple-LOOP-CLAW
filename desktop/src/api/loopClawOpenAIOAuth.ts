@@ -2,7 +2,7 @@
 
 import { api, getBaseUrl } from './client'
 
-export type HahaOpenAIOAuthStatus =
+export type LoopClawOpenAIOAuthStatus =
   | { loggedIn: false }
   | {
       loggedIn: true
@@ -29,7 +29,7 @@ export const loopClawOpenAIOAuthApi = {
   },
 
   status() {
-    return api.get<HahaOpenAIOAuthStatus>('/api/loopclaw-openai-oauth')
+    return api.get<LoopClawOpenAIOAuthStatus>('/api/loopclaw-openai-oauth')
   },
 
   logout() {

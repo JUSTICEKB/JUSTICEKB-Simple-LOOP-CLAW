@@ -17,8 +17,8 @@ import { handleAdaptersApi } from './api/adapters.js'
 import { handlePluginsApi } from './api/plugins.js'
 import { handleSkillsApi } from './api/skills.js'
 import { handleComputerUseApi } from './api/computer-use.js'
-import { handleHahaOAuthApi } from './api/loopclaw-oauth.js'
-import { handleHahaOpenAIOAuthApi } from './api/loopclaw-openai-oauth.js'
+import { handleLoopClawOAuthApi } from './api/loopclaw-oauth.js'
+import { handleLoopClawOpenAIOAuthApi } from './api/loopclaw-openai-oauth.js'
 import { handleMcpApi } from './api/mcp.js'
 import { handleDiagnosticsApi } from './api/diagnostics.js'
 import { handleDoctorApi } from './api/doctor.js'
@@ -79,10 +79,10 @@ export async function handleApiRequest(req: Request, url: URL): Promise<Response
       return handleProvidersApi(req, url, segments)
 
     case 'loopclaw-oauth':
-      return handleHahaOAuthApi(req, url, segments)
+      return handleLoopClawOAuthApi(req, url, segments)
 
     case 'loopclaw-openai-oauth':
-      return handleHahaOpenAIOAuthApi(req, url, segments)
+      return handleLoopClawOpenAIOAuthApi(req, url, segments)
 
     case 'adapters':
       return handleAdaptersApi(req, url, segments)

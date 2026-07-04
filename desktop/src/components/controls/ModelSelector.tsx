@@ -16,8 +16,8 @@ import type { EffortLevel, ModelInfo } from '../../types/settings'
 import { useMobileViewport } from '../../hooks/useMobileViewport'
 import { isDesktopRuntime } from '../../lib/desktopRuntime'
 import { resolveDefaultRuntimeSelection } from '../../lib/runtimeSelection'
-import { useHahaOAuthStore } from '../../stores/loopClawOAuthStore'
-import { useHahaOpenAIOAuthStore } from '../../stores/loopClawOpenAIOAuthStore'
+import { useLoopClawOAuthStore } from '../../stores/loopClawOAuthStore'
+import { useLoopClawOpenAIOAuthStore } from '../../stores/loopClawOpenAIOAuthStore'
 import { MobileBottomSheet } from '../shared/MobileBottomSheet'
 
 type ProviderChoice = {
@@ -168,10 +168,10 @@ export const ModelSelector = forwardRef<ModelSelectorHandle, Props>(function Mod
     isLoading: providersLoading,
     fetchProviders,
   } = useProviderStore()
-  const claudeOAuthStatus = useHahaOAuthStore((s) => s.status)
-  const fetchClaudeOAuthStatus = useHahaOAuthStore((s) => s.fetchStatus)
-  const openAIOAuthStatus = useHahaOpenAIOAuthStore((s) => s.status)
-  const fetchOpenAIOAuthStatus = useHahaOpenAIOAuthStore((s) => s.fetchStatus)
+  const claudeOAuthStatus = useLoopClawOAuthStore((s) => s.status)
+  const fetchClaudeOAuthStatus = useLoopClawOAuthStore((s) => s.fetchStatus)
+  const openAIOAuthStatus = useLoopClawOpenAIOAuthStore((s) => s.status)
+  const fetchOpenAIOAuthStatus = useLoopClawOpenAIOAuthStore((s) => s.fetchStatus)
   const runtimeSelection = useSessionRuntimeStore((state) =>
     runtimeKey ? state.selections[runtimeKey] : undefined,
   )

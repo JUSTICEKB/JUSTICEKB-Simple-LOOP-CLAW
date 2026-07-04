@@ -12,7 +12,7 @@ All notable changes to **Simple LoopClaw** will be documented in this file. This
 - Added project `ROADMAP.md` mapping visual workflow pipelines.
 
 ### Changed
-- Rebranded project files, configurations, and variables from `cc-haha`/`claude-haha` to `simple-loop-claw` and `loop-claw` globally.
+- Rebranded project files, configurations, and variables from `simple-loop-claw`/`claude-loopclaw` to `simple-loop-claw` and `loop-claw` globally.
 - Cleaned up test environments and refactored local mock configurations.
 
 ---

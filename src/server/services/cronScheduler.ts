@@ -753,13 +753,13 @@ export class CronScheduler {
       return true
     }
 
-    const ccHahaDir = path.join(this.getConfigDir(), 'simple-loop-claw')
-    if (existsSync(path.join(ccHahaDir, 'providers.json'))) {
+    const loopClawDir = path.join(this.getConfigDir(), 'simple-loop-claw')
+    if (existsSync(path.join(loopClawDir, 'providers.json'))) {
       return true
     }
 
     try {
-      const raw = readFileSync(path.join(ccHahaDir, 'settings.json'), 'utf-8')
+      const raw = readFileSync(path.join(loopClawDir, 'settings.json'), 'utf-8')
       const parsed = JSON.parse(raw) as { env?: Record<string, string> }
       const env = parsed.env ?? {}
       return Object.entries(env).some(

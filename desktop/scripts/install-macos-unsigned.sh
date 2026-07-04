@@ -14,7 +14,7 @@ set -euo pipefail
 #
 # Usage:
 #   bash install-macos-unsigned.sh                       # auto-pick the DMG next to this script
-#   bash install-macos-unsigned.sh /path/to/Claude-Code-Haha-0.4.0-mac-arm64.dmg
+#   bash install-macos-unsigned.sh /path/to/Claude-Code-LoopClaw-0.4.0-mac-arm64.dmg
 
 APP_NAME="Simple LoopClaw.app"
 APP_PATH="/Applications/${APP_NAME}"
@@ -30,7 +30,7 @@ find_dmg() {
   arch="$(uname -m)"
 
   shopt -s nullglob
-  local matches=("${dir}"/Claude-Code-Haha-*-mac-*.dmg)
+  local matches=("${dir}"/Claude-Code-LoopClaw-*-mac-*.dmg)
   shopt -u nullglob
 
   if [ "${#matches[@]}" -eq 0 ]; then
@@ -67,7 +67,7 @@ main() {
     if ! dmg="$(find_dmg "$base_dir")"; then
       echo "No Simple LoopClaw macOS DMG found next to this script."
       echo "Download the DMG into the same folder as this script, then run it again."
-      echo "Usage: bash install-macos-unsigned.sh /path/to/Claude-Code-Haha-0.4.0-mac-arm64.dmg"
+      echo "Usage: bash install-macos-unsigned.sh /path/to/Claude-Code-LoopClaw-0.4.0-mac-arm64.dmg"
       exit 1
     fi
   fi

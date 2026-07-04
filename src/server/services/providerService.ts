@@ -139,12 +139,12 @@ export class ProviderService {
     return process.env.CLAUDE_CONFIG_DIR || path.join(os.homedir(), '.claude')
   }
 
-  private getCcHahaDir(): string {
+  private getLoopClawDir(): string {
     return path.join(this.getConfigDir(), 'simple-loop-claw')
   }
 
   private getIndexPath(): string {
-    return path.join(this.getCcHahaDir(), 'providers.json')
+    return path.join(this.getLoopClawDir(), 'providers.json')
   }
 
   private async readIndex(): Promise<ProvidersIndex> {
