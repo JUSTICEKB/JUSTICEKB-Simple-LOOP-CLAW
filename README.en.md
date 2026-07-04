@@ -21,27 +21,42 @@
 
 ---
 
-## 💡 Project Overview & Purpose
+## 💡 Project Background & Design Philosophy
 
-**Simple LoopClaw** is a consolidated local Claude Code workbench designed to merge the best community open-source enhancements from projects like `cc-haha` and `Qclaw`.
+**Simple LoopClaw** is a local **AI Agent collaboration and workflow orchestration workbench** designed for individual developers to lower the barrier of entry for AI-assisted programming.
 
-By analyzing these implementations, we combined their respective advantages:
-1. **Inheriting the Solid Core from `cc-haha`**: Includes the fully functional local execution CLI engine, multi-provider compatibility (Anthropic, OpenAI, DeepSeek, Ollama, etc.), desktop Electron workbench showing real-time git diffs/file changes, memory persistence, multi-agent coordination, and Computer Use support.
-2. **Embodying the Ease-of-Use Philosophy from `Qclaw`**:
-   - Added **Windows-friendly launch scripts** (`bin/loop-claw.cmd`) so Windows developers can start the CLI in PowerShell or Command Prompt with one click, without needing a full bash terminal installation.
-   - Refined onboarding checks for a smoother beginner setup.
-   - Centralized and documented IM bot connections for **Feishu, DingTalk, WeChat, Telegram, and WhatsApp**.
-3. **Bilingual Compliance & Safety**: Clear, detailed disclaimer statements in both English and Chinese placed throughout the repository and license files to highlight its educational nature.
+By unifying and refactoring the best open-source practices from the community (`cc-haha` and `Qclaw`), we implemented several core enhancements:
+1. **Engine Upgrade (from `cc-haha`)**: Inherits the full-featured local execution CLI engine, custom MCP tool integrations, and a beautiful Electron + React desktop IDE workspace companion.
+2. **Simplified Spirit (from `Qclaw`)**:
+   - Streamlined environment checks to minimize onboarding friction for beginners.
+   - Designed a **Windows-friendly native launcher** (`bin/loop-claw.cmd`) so Windows developers do not need complex WSL or Bash configuration to run CLI agent loops.
+   - Built out unified and documented **IM channel bot adapters** for Feishu, DingTalk, WeChat, Telegram, and WhatsApp.
+3. **Future AI IDE Vision**: More than just a CLI wrapper, we are moving towards **visual JSON-driven workflow orchestration**, **multi-agent team layout controls**, and **IDE integrations** to build a personal AI IDE workspace.
+
+---
+
+## 📸 Desktop Preview
+
+<table>
+  <tr>
+    <td align="center" width="50%"><img src="docs/images/desktop_ui/10_desktop_workspace.png" alt="Workspace client"><br><b>Developer Workspace Panel (Sessions & Files)</b></td>
+    <td align="center" width="50%"><img src="docs/images/desktop_ui/02_edit_code.png" alt="Code Diff"><br><b>Interactive Visual Code Diff Viewer</b></td>
+  </tr>
+  <tr>
+    <td align="center" width="50%"><img src="docs/images/desktop_ui/03_ask_question_and_permission.png" alt="Permission Approval"><br><b>AI Safety Controls (Permission Gate)</b></td>
+    <td align="center" width="50%"><img src="docs/images/desktop_ui/08_scheduled_task.png" alt="Analytics and tasks"><br><b>Usage Metrics & Cron Task Scheduler</b></td>
+  </tr>
+</table>
 
 ---
 
 ## 🚀 Core Features
 
-- 🖥️ **Desktop Developer Workbench**: Centralizes chat history, project directories, git worktrees, file modification panels, real-time code diff visualization, and prompt/command approval flows.
-- 🤖 **Multi-Model Support**: Connect via Anthropic API, OpenAI compatibility, DeepSeek, Ollama, or set up fallback search models.
-- 💬 **Bespoke IM Bots**: Turn your local agent loop into a 24/7 autonomous chatbot helper in your favorite chat channels.
-- 🪟 **Native Windows Integration**: Custom batch-file CLI wrapper (`bin/loop-claw.cmd`) for robust Windows-native terminal executions.
-- 🧠 **Advanced Capabilities**: Built-in memory systems, multi-agent orchestration, and skill plugin extensions.
+- 🖥️ **Visual Developer Cockpit**: Review file edits, console command traces, and terminal logs in real-time with safety prompt approvals.
+- ⚙️ **Multi-Model Provider Presets**: Connect and switch seamlessly between Anthropic API, OpenAI, DeepSeek, Ollama, and local WebSearch fallbacks.
+- 🤖 **Bespoke IM Adaptors**: Direct adapters to let your local coding agent run as a 24/7 autonomous chatbot helper inside corporate messenger platforms.
+- 🪟 **Native Windows Shell Wrappers**: Fully integrated batch launch script `bin/loop-claw.cmd` compatible with CMD and PowerShell.
+- 🧩 **LSP & MCP Support**: Native filesystem and system tools alongside extensions supporting the Model Context Protocol (MCP).
 
 ---
 
@@ -49,12 +64,12 @@ By analyzing these implementations, we combined their respective advantages:
 
 ### 1. Requirements
 * **Node.js** >= 22 (Node.js 24 recommended)
-* **Bun** (Optional, for developer tests and CLI debugging)
+* **Bun** (Optional, for CLI debugging and running component tests)
 
-### 2. Install & Run CLI
+### 2. Install & Launch CLI
 
 #### On Windows
-Use the native CMD batch script:
+Use the native batch script:
 ```cmd
 # Install dependencies
 npm install
@@ -74,13 +89,13 @@ npm install
 # Copy configuration
 cp .env.example .env
 
-# Grant permission & run
+# Grant execution rights and run
 chmod +x ./bin/loop-claw
 ./bin/loop-claw
 ```
 
-### 3. Desktop Electron Application
-To use the visual workspace and review file modifications interactively:
+### 3. Run Desktop Visual Workspace
+Compile and launch the Electron application:
 ```bash
 cd desktop
 npm install
@@ -89,22 +104,10 @@ npm run dev
 
 ---
 
-## 💬 Instant Messaging (IM) Bot Setup
+## 📁 Repository Quick Navigation
 
-To bridge Simple LoopClaw to your messaging apps, refer to the guides in `docs/im/`:
-
-| Platform | Setup Guide / Config Path |
-|------|------|
-| **Feishu** | [Feishu Guide](docs/im/feishu.md) |
-| **WeChat** | [WeChat Guide](docs/im/wechat.md) |
-| **DingTalk** | [DingTalk Guide](docs/im/dingtalk.md) |
-| **Telegram** | [Telegram Guide](docs/im/telegram.md) |
-| **WhatsApp** | [WhatsApp Guide](docs/im/whatsapp.md) |
-
----
-
-## ⚖️ License & Intellectual Property
-
-1. This project is provided as an open-source **educational mirror and research hub**.
-2. All IP, copyright, and mechanisms of the core source code belong to **Anthropic, PBC**.
-3. While additional scripts, wrappers, and configuration guides are released under the **Apache License 2.0**, overall usage of the files in this repository remains subject to the commercial restrictions and disclaimer conditions specified in the [LICENSE](LICENSE) file.
+- 📄 **Educational Disclaimer & Licensing Rules**: [LICENSE](LICENSE) (Lists the legal disclaimers, copyrights, and strict non-commercial restrictions).
+- 🧭 **Development Milestones**: [ROADMAP.md](ROADMAP.md) (Check milestones regarding visual JSON workflows, MCP registries, and IDE plugins).
+- 📋 **Contributing Guidelines**: [CONTRIBUTING.md](CONTRIBUTING.md) (Explains local quality tests, coverage gates, and PR check policies).
+- 📝 **Change History**: [CHANGELOG.md](CHANGELOG.md) (Log of features and enhancements from version 0.1.0 to 0.4.5).
+- 💬 **IM Integrations**: Refer to [docs/im/](docs/im/) for specific platform instructions.

@@ -1,33 +1,32 @@
-## Summary
+## Summary / 概述
+<!-- Provide a general summary of your changes / 请提供关于改动的简要说明 -->
 
 
-## Feature Quality Contract
+## Feature Quality Contract / 功能质量契约
 
-- Changed surface: <!-- desktop / server / adapter / native / docs / provider-runtime / agent-loop / release -->
-- Tests added or updated:
-  - <!-- e.g. unit/component/API/request-shape/workflow/E2E -->
-- Coverage evidence:
-  - <!-- coverage report path + relevant suite summary + changed-line coverage -->
-- E2E / live-model evidence:
-  - <!-- command + report path, or explicit blocker such as no provider/quota -->
-- Known risk / rollback:
+- **Changed Surface (影响模块)**: <!-- desktop / server / adapter / native / docs / provider-runtime / agent-loop / release -->
+- **Tests Added or Updated (新增或更新的测试)**:
+  - <!-- e.g., unit/component/API/request-shape/workflow/E2E -->
+- **Coverage Evidence (测试覆盖率证明)**:
+  - <!-- coverage report path + changed-line coverage -->
+- **E2E / Live Model Evidence (E2E或真实模型测试证明)**:
+  - <!-- commands run, report paths, or explicit blockers -->
+- **Known Risk & Rollback (风险与回滚方案)**:
   - <!-- remaining risk and how to revert safely -->
 
-## Verification
+---
 
-- [ ] I ran the relevant local checks, or explained why they do not apply.
-- [ ] I added or updated same-area tests for every production behavior change.
-- [ ] I ran `bun run verify` for code changes, including the coverage gate.
-- [ ] New or changed executable production lines meet the changed-line coverage threshold, or the blocker/maintainer override is documented.
-- [ ] I attached or summarized the quality report path, JUnit/log artifact path, and pass/fail/skip counts.
-- [ ] I ran E2E/live smoke for cross-boundary, provider/runtime, desktop chat, agent-loop, native, or release changes, or documented the blocker.
+## Verification / 验证清单
 
-## Risk
+- [ ] I ran the relevant local checks, or explained why they do not apply. / 我已运行相关本地检查，或说明了不适用的原因。
+- [ ] I added or updated same-area tests for every production behavior change. / 每一个行为变更都已添加或更新了相同区域的测试。
+- [ ] I ran `bun run verify` / `npm run verify` for code changes, including the coverage gate. / 对代码变更运行了包含覆盖率检查的 `verify` 命令。
+- [ ] New or changed executable production lines meet the changed-line coverage threshold. / 新增或修改的代码行均满足覆盖率门槛。
+- [ ] I ran E2E/live smoke for cross-boundary, provider/runtime, desktop chat, agent-loop, native, or release changes. / 针对跨边界、Provider、桌面端、核心Agent循环运行了E2E/真实模型冒烟测试，或记录了阻碍原因。
 
-- [ ] This PR does not touch CLI core paths, or it has maintainer approval for `allow-cli-core-change`.
-- [ ] Production code changes include matching tests, or have maintainer approval for `allow-missing-tests`.
-- [ ] Coverage baseline/threshold changes have maintainer approval for `allow-coverage-baseline-change`.
-- [ ] Quarantined tests still have owners, exit criteria, and unexpired review windows.
-- [ ] Provider/runtime changes were covered by mock contract tests, and live smoke was run or explicitly deferred.
+---
 
-@dosubot review this PR for changed-area risk, missing tests, docs impact, desktop startup risk, and CLI core impact.
+## Safety & Compliance / 安全与合规性
+
+- [ ] This PR does not violate any licensing terms or commercial restrictions of the underlying engine. / 此 PR 未违反底层引擎的任何许可条款或商业限制。
+- [ ] All sensitive files and credentials (API keys, settings, local databases) are ignored by git. / 所有敏感文件和凭据均已由 git 忽略。

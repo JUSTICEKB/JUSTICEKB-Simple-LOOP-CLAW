@@ -28,25 +28,40 @@
 
 ## 💡 项目背景与设计初衷
 
-**Simple LoopClaw** 是一个旨在融合社区优秀开源实践（`cc-haha` 与 `Qclaw`）的**优势整合版** Local Claude Code 工作台。
+**Simple LoopClaw** 是一个致力于降低 AI 辅助编程门槛、为个人开发者打造的本地 **AI Agent 协同与工作流编排工作台**。
 
-在研究了现有项目后，我们结合了它们的优点进行了改造：
-1. **继承 `cc-haha` 的强大底座**：拥有完整的本地执行引擎（CLI）和直观的 Electron + React 桌面端开发工作台，支持多模型提供商（Anthropic, OpenAI, DeepSeek, Ollama 等）、Agent 协同、记忆系统以及桌面 Computer Use 截图控制。
-2. **融入 `Qclaw` 的极简与易用精神**：
-   - 提供了 **Windows 友好启动脚本** (`bin/loop-claw.cmd`)，让 Windows 用户无需配置繁琐的 Bash 环境，直接双击或在 PowerShell 中一行命令即可调出 CLI 引擎。
-   - 优化了 onboarding 初始化检测机制，使小白用户也能快速上手。
-   - 整理并集成了包括 **飞书、钉钉、微信、企业微信、QQ、Telegram、WhatsApp** 在内的完整 IM 接入适配方案。
-3. **中英文合规免责声明**：在仓库、证书和说明中做好了完备的双语免责与版权说明，确保研究学习的合规性。
+项目结合了社区最优秀的两个开源实践（`cc-haha` 与 `Qclaw`）并进行了系统性的功能升级与架构改造：
+1. **底座升级 (来自 `cc-haha`)**：支持全功能的本地 AI 编程引擎（CLI 交互）、支持自定义 MCP（Model Context Protocol）工具集，并且提供了一个基于 Electron + React 构建的精致桌面 IDE 协同工作台。
+2. **极简精神 (来自 `Qclaw`)**：
+   - 彻底优化了环境检测逻辑，大幅降低小白用户的配置成本。
+   - 新增了 **Windows 专属快捷启动器** (`bin/loop-claw.cmd`)，让 Windows 开发者免受 WSL 或 Bash 环境的繁琐配置之苦。
+   - 整理并集成了包括飞书、钉钉、微信、QQ、Telegram、WhatsApp 在内的完备 **IM 渠道接入适配器**。
+3. **前瞻性 AI IDE 设计**：我们不仅仅在做本地 CLI 工具，还在向**可视化 JSON 任务流编排 (JSON-driven workflows)**、**多智能体协同 (Multi-Agent team layout)** 以及 **IDE 插件模式** 进发，构建属于开发者个人的 AI IDE。
+
+---
+
+## 📸 桌面端预览 (Screenshots)
+
+<table>
+  <tr>
+    <td align="center" width="50%"><img src="docs/images/desktop_ui/10_desktop_workspace.png" alt="主工作台"><br><b>主开发工作台 (Sessions & Files)</b></td>
+    <td align="center" width="50%"><img src="docs/images/desktop_ui/02_edit_code.png" alt="代码对比"><br><b>可视化代码对比与 Diff 视图</b></td>
+  </tr>
+  <tr>
+    <td align="center" width="50%"><img src="docs/images/desktop_ui/03_ask_question_and_permission.png" alt="审批流"><br><b>权限控制与 AI 审批流 (Permission Gate)</b></td>
+    <td align="center" width="50%"><img src="docs/images/desktop_ui/08_scheduled_task.png" alt="定时任务"><br><b>计划任务与用量统计面板 (Usage & Tasks)</b></td>
+  </tr>
+</table>
 
 ---
 
 ## 🚀 核心功能亮点
 
-- 🖥️ **图形化开发工作台**：将会话、多项目、Git 分支/Worktree 管理、右侧文件改动面板、代码 Diff 视图、指令审批确认流无缝集成。
-- 🤖 **多模型支持**：支持 Anthropic 兼容 API、OpenAI、DeepSeek、Ollama 以及 WebSearch fallback 本地自定义配置。
-- 💬 **多平台 IM 机器人接入**：轻松让你的 Agent 在各类即时通讯工具中化身 24 小时在线助手。
-- 🪟 **Windows 深度适配**：新增 Windows 专属快捷启动器 `bin/loop-claw.cmd`，极大提升 Windows 环境下的使用体验。
-- 🧠 **高级 Agent 属性**：内置持久化记忆系统、多 Agent 编排系统和 Skills 插件扩展能力。
+- 🖥️ **可视化开发面板**：在桌面应用中直接查看 AI 的每一步文件修改、执行的终端命令，并提供一键安全审批拦截（防止误删或泄露数据）。
+- ⚙️ **多模型提供商 presets**：轻松配置并灵活切换 Anthropic API、OpenAI、DeepSeek、Ollama 以及 WebSearch fallback 本地自定义提供商。
+- 🤖 **多平台 IM 机器人接入**：通过统一适配层，可让 Coding Agent 独立在即时通讯平台中工作。
+- 🪟 **Windows 友好启动器**：通过专门定制的批处理脚本 `bin/loop-claw.cmd` 启动，无缝接入 CMD 和 PowerShell 终端。
+- 🧩 **LSP / MCP 工具支持**：自带丰富的文件、系统、Shell 工具链，并支持集成任何 Model Context Protocol 协议的外部工具包。
 
 ---
 
@@ -54,12 +69,12 @@
 
 ### 1. 运行环境要求
 * **Node.js** >= 22 (推荐 Node.js 24)
-* **Bun** (可选，如需调试 CLI 或运行桌面测试)
+* **Bun** (可选，调试 CLI 与运行测试)
 
 ### 2. 源码安装与 CLI 启动
 
-#### Windows 用户
-可以使用我们为您准备的 CMD 快捷启动脚本：
+#### Windows 平台
+使用 Windows 专属快捷启动器：
 ```cmd
 # 安装依赖
 npm install
@@ -67,11 +82,11 @@ npm install
 # 复制并配置环境变量
 copy .env.example .env
 
-# 启动 CLI 交互界面
+# 运行 CLI
 .\bin\loop-claw.cmd
 ```
 
-#### macOS / Linux 用户
+#### macOS / Linux 平台
 ```bash
 # 安装依赖
 npm install
@@ -84,8 +99,8 @@ chmod +x ./bin/loop-claw
 ./bin/loop-claw
 ```
 
-### 3. 启动桌面端应用 (Electron)
-想要享受可视化 Diff 视图和更方便的项目管理？您可以编译启动桌面端：
+### 3. 运行可视化桌面端
+编译并运行 Electron 桌面环境：
 ```bash
 cd desktop
 npm install
@@ -94,22 +109,11 @@ npm run dev
 
 ---
 
-## 💬 即时通讯 (IM) 接入指南
+## 📁 快速资源导航 (Documentation & Guides)
 
-如果您希望将 Simple LoopClaw 接入各类聊天软件，请参考 `docs/im/` 下的配置指南：
-
-| 平台 | 配置文件 / 指南链接 |
-|------|------|
-| **飞书 (Feishu)** | [飞书接入指南](docs/im/feishu.md) |
-| **微信 (WeChat)** | [微信接入指南](docs/im/wechat.md) |
-| **钉钉 (DingTalk)** | [钉钉接入指南](docs/im/dingtalk.md) |
-| **Telegram** | [Telegram 接入指南](docs/im/telegram.md) |
-| **WhatsApp** | [WhatsApp 接入指南](docs/im/whatsapp.md) |
-
----
-
-## ⚖️ 开源协议与版权声明
-
-1. 本项目为开源**学术研究/学习镜像**。
-2. 原始核心代码及机制的知识产权归 **Anthropic, PBC** 所有。
-3. 本项目除原始版权外，新增的脚手架、包装脚本及文档采用 **Apache License 2.0** 授权，但整体分发与使用必须严格遵循 [LICENSE](LICENSE) 文件中所列出的**商业限制与免责条款**。
+为了让您能够更好地了解和参与项目，我们准备了以下核心资源：
+- 📄 **学术研究免责声明与许可协议**：[LICENSE](LICENSE) (详细列出了使用本软件的版权声明和商业限制条款)。
+- 🧭 **开发路线图**：[ROADMAP.md](ROADMAP.md) (关于可视化 JSON 任务流编排、MCP 插件中心以及 IDE 伴侣模式的发布日程)。
+- 📋 **贡献指南**：[CONTRIBUTING.md](CONTRIBUTING.md) (详细说明了本地验证流程、覆盖率门槛以及 PR 质量门禁)。
+- 📝 **历史版本变更**：[CHANGELOG.md](CHANGELOG.md) (记录了从 v0.1.0 到 v0.4.5 的所有演进细节)。
+- 💬 **即时通讯接入指南**：详细配置指南可在 [docs/im/](docs/im/) 查看。

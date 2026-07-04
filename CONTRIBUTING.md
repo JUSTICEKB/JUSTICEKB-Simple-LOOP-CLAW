@@ -1,4 +1,8 @@
-# 贡献指南
+# 贡献指南 (Contribution Guidelines)
+
+========================================================================
+CHINESE VERSION (中文版本)
+========================================================================
 
 提交 PR 前需要完成以下三步。
 
@@ -53,6 +57,56 @@ bun run quality:providers
 bun run quality:smoke --provider-model <provider:model>
 ```
 
-## 更多
-
 完整质量门禁和覆盖率说明见 [AGENTS.md](AGENTS.md)。
+
+
+========================================================================
+ENGLISH VERSION (英文版本)
+========================================================================
+
+Please complete the following three steps before submitting a Pull Request.
+
+## 1. Run Local Quality Gates
+
+```bash
+bun run verify
+```
+
+`bun run verify` will run comprehensive checks across policy rules, desktop client, local server, IM adapters, native packaging, quarantine status, and test coverage. A non-zero exit code indicates that the current branch is not yet ready to be merged.
+
+If you are only editing specific directories, you can use narrower commands for fast iterations:
+
+| Scope | Fast Check |
+| --- | --- |
+| CLI / Server / Tools | `bun run check:server` |
+| Desktop Client | `bun run check:desktop` |
+| IM Adapters | `bun run check:adapters` |
+| Electron Host & Native Packaging | `bun run check:native` |
+| Docs | `bun run check:docs` |
+
+If a check fails, review the generated quality report and lane log:
+- `artifacts/quality-runs/<timestamp>/report.md`
+- `artifacts/quality-runs/<timestamp>/logs/<lane>.log`
+
+## 2. Desktop Feature Manual Testing
+
+If your changes affect UI, state stores, API routing, Electron host, or packaging under `desktop/`, you must perform a manual smoke test on a real machine:
+- Run the local server: `SERVER_PORT=3456 bun run src/server/index.ts`
+- Run the desktop client in development: `cd desktop && bun run dev`
+- Verify user interactions (rendering, button clicks, dialog boxes, keyboard shortcuts, multi-window behavior).
+- If necessary, compile a local package: `desktop/scripts/build-macos-arm64.sh` or platform equivalent to verify production outputs.
+
+## 3. PR Description Requirements
+
+Your Pull Request description must include:
+- **Touched Surface**: (e.g. desktop, server, adapter, native, docs, provider, agent-loop)
+- **Testing Record**: Unit test output, coverage statistics, and manual verification steps.
+- **Remaining Risk**: Known limitations or edge cases left to follow up.
+
+For critical runtime paths, model permission controls, or agent session loops, verify using real-model smoke tests:
+```bash
+bun run quality:providers
+bun run quality:smoke --provider-model <provider:model>
+```
+
+Refer to [AGENTS.md](AGENTS.md) for full test details.
