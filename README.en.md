@@ -1,4 +1,4 @@
-# Simple LoopClaw (Simple LoopClaw)
+# JUSTICEKB Simple LOOP CLAW
 
 <p align="center">
   <img src="docs/images/app-icon.png" alt="Simple LoopClaw" width="180">
@@ -12,6 +12,20 @@
 [![Bilingual](https://img.shields.io/badge/Language-Bilingual%20%2F%20中英双语-green.svg)](#)
 
 </div>
+
+An open-source AI Coding Workflow platform for local and cloud coding agents.
+
+### Features
+
+- **Unified AI coding workflow**
+- **Local LLM support**
+- **Claude Code integration**
+- **OpenAI Codex integration**
+- **Gemini integration**
+- **Multi-model routing**
+- **Automatic repair loops**
+- **JSON project management**
+- **Desktop GUI**
 
 ---
 
