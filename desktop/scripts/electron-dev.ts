@@ -43,10 +43,11 @@ async function main() {
   process.env.NO_PROXY = childEnv.NO_PROXY
   process.env.no_proxy = childEnv.no_proxy
 
-  const bunCmd = process.platform === 'win32' ? 'bun.cmd' : 'bun'
-  const bunxCmd = process.platform === 'win32' ? 'bunx.cmd' : 'bunx'
+  const viteArgs = process.platform === 'win32'
+    ? ['cmd.exe', '/c', 'bun', 'run', 'dev']
+    : ['bun', 'run', 'dev']
 
-  const vite = Bun.spawn([bunCmd, 'run', 'dev'], {
+  const vite = Bun.spawn(viteArgs, {
     cwd: desktopRoot,
     env: childEnv,
     stdout: 'inherit',
@@ -68,7 +69,11 @@ async function main() {
 
   await waitForRenderer(rendererUrl)
 
-  const electron = Bun.spawn([bunxCmd, 'electron', './electron-dist/main.cjs'], {
+  const electronArgs = process.platform === 'win32'
+    ? ['cmd.exe', '/c', 'bunx', 'electron', './electron-dist/main.cjs']
+    : ['bunx', 'electron', './electron-dist/main.cjs']
+
+  const electron = Bun.spawn(electronArgs, {
     cwd: desktopRoot,
     env: childEnv,
     stdout: 'inherit',
