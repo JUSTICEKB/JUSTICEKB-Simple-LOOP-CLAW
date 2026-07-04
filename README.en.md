@@ -1,97 +1,109 @@
-# Simple-LOOP-CLAW
+# Simple LoopClaw (Simple LoopClaw)
 
 <p align="center">
-  <img src="docs/images/banner.png" alt="Simple-LOOP-CLAW" width="720">
+  <img src="docs/images/app-icon.png" alt="Simple LoopClaw" width="180">
 </p>
 
 <div align="center">
 
 [![License](https://img.shields.io/badge/License-Educational_Use_Only-orange.svg)](LICENSE)
-[![Repository](https://img.shields.io/badge/GitHub-JUSTICEKB%2FJUSTICEKB--Simple--LOOP--CLAW-334B89.svg)](https://github.com/JUSTICEKB/JUSTICEKB-Simple-LOOP-CLAW)
-[![Stack](https://img.shields.io/badge/Stack-TypeScript%20%2F%20Bun%20%2F%20Electron-E7A72C.svg)](#stack)
+[![GitHub](https://img.shields.io/badge/GitHub-JUSTICEKB--Simple--LOOP--CLAW-blue?logo=github)](https://github.com/JUSTICEKB/JUSTICEKB-Simple-LOOP-CLAW)
+[![Language](https://img.shields.io/badge/Language-TypeScript%20%2F%20Python-blue.svg)](#)
+[![Bilingual](https://img.shields.io/badge/Language-Bilingual%20%2F%20中英双语-green.svg)](#)
 
 </div>
 
-Simple-LOOP-CLAW is a local AI Coding Agent workbench with a CLI, local API server, Electron desktop app, model-provider presets, and IM adapters. It brings sessions, file edits, permission gates, scheduled tasks, and provider configuration into one visual workflow.
+---
 
-> Important: This repository is for learning, research, and local technical experiments. Follow the terms of every model, OAuth, IM, and automation provider you connect, and protect your API keys, tokens, and local data.
+> [!WARNING]
+> ### ⚠️ CRITICAL DISCLAIMER
+> This repository is based on the source code of **Claude Code** leaked from the Anthropic npm registry on 2026-03-31. All original source code copyrights belong exclusively to **Anthropic**. This repository and its modified versions are provided **strictly for educational, study, and research purposes only**. Commercial use, distribution, or resale of this software is strictly prohibited. Use at your own risk.
 
-## Brand
+---
 
-The project now uses the local `docs/images/app-icon.png` and `docs/images/banner.png` assets consistently. README screenshots and logos are local repository assets, not remote GitHub screenshots or legacy branding.
+## 💡 Project Background & Design Philosophy
 
-| Role | Color |
-| --- | --- |
-| Primary blue | `#334B89` |
-| Accent gold | `#E7A72C` |
-| Danger red | `#D13631` |
+**Simple LoopClaw** is a local **AI Agent collaboration and workflow orchestration workbench** designed for individual developers to lower the barrier of entry for AI-assisted programming.
 
-## Desktop Preview
+By unifying and refactoring the best open-source practices from the community (`cc-haha` and `Qclaw`), we implemented several core enhancements:
+1. **Engine Upgrade (from `cc-haha`)**: Inherits the full-featured local execution CLI engine, custom MCP tool integrations, and a beautiful Electron + React desktop IDE workspace companion.
+2. **Simplified Spirit (from `Qclaw`)**:
+   - Streamlined environment checks to minimize onboarding friction for beginners.
+   - Designed a **Windows-friendly native launcher** (`bin/loop-claw.cmd`) so Windows developers do not need complex WSL or Bash configuration to run CLI agent loops.
+   - Built out unified and documented **IM channel bot adapters** for Feishu, DingTalk, WeChat, Telegram, and WhatsApp.
+3. **Future AI IDE Vision**: More than just a CLI wrapper, we are moving towards **visual JSON-driven workflow orchestration**, **multi-agent team layout controls**, and **IDE integrations** to build a personal AI IDE workspace.
 
-These screenshots are repository-local desktop preview assets.
+---
+
+## 📸 Desktop Preview
 
 <table>
   <tr>
-    <td align="center" width="50%"><img src="docs/images/desktop_ui/10_desktop_workspace.png" alt="Developer workspace"><br><b>Developer Workspace (Sessions & Files)</b></td>
-    <td align="center" width="50%"><img src="docs/images/desktop_ui/08_scheduled_task.png" alt="Scheduled tasks"><br><b>Usage & Scheduled Tasks</b></td>
+    <td align="center" width="50%"><img src="docs/images/desktop_ui/10_desktop_workspace.png" alt="Workspace client"><br><b>Developer Workspace Panel (Sessions & Files)</b></td>
+    <td align="center" width="50%"><img src="docs/images/desktop_ui/08_scheduled_task.png" alt="Analytics and tasks"><br><b>Usage Metrics & Cron Task Scheduler</b></td>
   </tr>
 </table>
 
-## Highlights
+---
 
-- Local CLI and desktop workflow for sessions, terminals, file edits, and permission approvals.
-- Provider presets for Claude Official, ChatGPT Official, DeepSeek, Kimi, MiniMax, Zhipu GLM, Google Gemini, local LM Studio / Ollama, and custom endpoints.
-- Google Gemini uses the official OpenAI compatibility endpoint with `https://generativelanguage.googleapis.com/v1beta/openai`.
-- Windows-friendly launcher: `bun run start` now dispatches to `bin/loop-claw.cmd` on Windows instead of asking Bun to parse the Bash launcher.
-- IM adapters for Telegram, Feishu, WeChat, DingTalk, and related remote workflows.
+## 🚀 Core Features
 
-## Stack
+- 🖥️ **Visual Developer Cockpit**: Review file edits, console command traces, and terminal logs in real-time with safety prompt approvals.
+- ⚙️ **Multi-Model Provider Presets**: Connect and switch seamlessly between Anthropic API, OpenAI, DeepSeek, Ollama, and local WebSearch fallbacks.
+- 🤖 **Bespoke IM Adaptors**: Direct adapters to let your local coding agent run as a 24/7 autonomous chatbot helper inside corporate messenger platforms.
+- 🪟 **Native Windows Shell Wrappers**: Fully integrated batch launch script `bin/loop-claw.cmd` compatible with CMD and PowerShell.
+- 🧩 **LSP & MCP Support**: Native filesystem and system tools alongside extensions supporting the Model Context Protocol (MCP).
 
-- Runtime: Bun, Node.js 22+
-- CLI / Server: TypeScript, Ink, WebSocket, local REST API
-- Desktop: Electron, React, Vite, Vitest
-- Docs: VitePress
+---
 
-## Quick Start
+## 🛠️ Quick Start
 
-```powershell
-bun install
-bun run start -- --help
+### 1. Requirements
+* **Node.js** >= 22 (Node.js 24 recommended)
+* **Bun** (Optional, for CLI debugging and running component tests)
+
+### 2. Install & Launch CLI
+
+#### On Windows
+Use the native batch script:
+```cmd
+# Install dependencies
+npm install
+
+# Copy configuration
+copy .env.example .env
+
+# Run CLI
+.\bin\loop-claw.cmd
 ```
 
-Start the local API server:
+#### On macOS / Linux
+```bash
+# Install dependencies
+npm install
 
-```powershell
-$env:SERVER_PORT = "3456"
-bun run src/server/index.ts
+# Copy configuration
+cp .env.example .env
+
+# Grant execution rights and run
+chmod +x ./bin/loop-claw
+./bin/loop-claw
 ```
 
-Start the desktop frontend:
-
-```powershell
+### 3. Run Desktop Visual Workspace
+Compile and launch the Electron application:
+```bash
 cd desktop
-bun install
-bun run dev
+npm install
+npm run dev
 ```
 
-The desktop Vite app defaults to `http://127.0.0.1:1420`, and the API server defaults to `http://127.0.0.1:3456`.
+---
 
-## Gemini Provider
+## 📁 Repository Quick Navigation
 
-Open Settings -> Providers in the desktop app and choose the Google Gemini preset:
-
-- API key: create one in [Google AI Studio](https://aistudio.google.com/app/apikey).
-- Base URL: `https://generativelanguage.googleapis.com/v1beta/openai`
-- API format: `openai_chat`
-- Default model: `gemini-3.5-flash`
-- Lightweight model: `gemini-3.1-flash-lite`
-
-Run the provider test before activating it for sessions.
-
-## Links
-
-- [中文 README](README.md)
-- [Desktop docs](docs/desktop/)
-- [Third-party model guide](docs/guide/third-party-models.md)
-- [IM adapter docs](docs/im/)
-- [Contributing](CONTRIBUTING.md)
+- 📄 **Educational Disclaimer & Licensing Rules**: [LICENSE](LICENSE) (Lists the legal disclaimers, copyrights, and strict non-commercial restrictions).
+- 🧭 **Development Milestones**: [ROADMAP.md](ROADMAP.md) (Check milestones regarding visual JSON workflows, MCP registries, and IDE plugins).
+- 📋 **Contributing Guidelines**: [CONTRIBUTING.md](CONTRIBUTING.md) (Explains local quality tests, coverage gates, and PR check policies).
+- 📝 **Change History**: [CHANGELOG.md](CHANGELOG.md) (Log of features and enhancements from version 0.1.0 to 0.4.5).
+- 💬 **IM Integrations**: Refer to [docs/im/](docs/im/) for specific platform instructions.

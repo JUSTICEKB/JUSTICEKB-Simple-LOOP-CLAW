@@ -10,7 +10,7 @@
 
 ## 一、界面布局
 
-![桌面端界面总览](../images/desktop_ui/01_full_ui.png)
+![桌面端界面总览](../images/desktop_ui/10_desktop_workspace.png)
 
 桌面端采用**三栏 + 标签页**的经典 IDE 布局，从左到右分为：
 
