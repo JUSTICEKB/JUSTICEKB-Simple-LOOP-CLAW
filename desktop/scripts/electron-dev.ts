@@ -43,8 +43,9 @@ async function main() {
   process.env.NO_PROXY = childEnv.NO_PROXY
   process.env.no_proxy = childEnv.no_proxy
 
+  const shellCmd = process.env.ComSpec ?? 'C:\\Windows\\System32\\cmd.exe'
   const viteArgs = process.platform === 'win32'
-    ? ['cmd.exe', '/c', 'bun', 'run', 'dev']
+    ? [shellCmd, '/c', 'bun', 'run', 'dev']
     : ['bun', 'run', 'dev']
 
   const vite = Bun.spawn(viteArgs, {
@@ -70,7 +71,7 @@ async function main() {
   await waitForRenderer(rendererUrl)
 
   const electronArgs = process.platform === 'win32'
-    ? ['cmd.exe', '/c', 'bunx', 'electron', './electron-dist/main.cjs']
+    ? [shellCmd, '/c', 'bunx', 'electron', './electron-dist/main.cjs']
     : ['bunx', 'electron', './electron-dist/main.cjs']
 
   const electron = Bun.spawn(electronArgs, {
